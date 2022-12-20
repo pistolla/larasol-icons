@@ -14,21 +14,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
-
-Route::get('/login', [SessionsController::class, 'create'])->name('login');
-
-Route::get('/users', [ProfileController::class, 'create'])->name('users');
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
-            
+*/  
 
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
