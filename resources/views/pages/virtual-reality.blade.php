@@ -185,4 +185,3 @@
         </x-footer.auth>
         <x-plugins></x-plugins>
 </x-layout>
-Footer
