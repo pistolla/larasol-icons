@@ -11,18 +11,17 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white mx-3"><strong> Add, Edit, Delete features are not
-                                        functional!</strong> This is a<strong> PRO</strong> feature! Click
-                                    <strong><a
-                                            href="https://www.creative-tim.com/product/material-dashboard-pro-laravel"
-                                            target="_blank" class="text-white"><u>here</u> </a></strong>to see
-                                    the PRO product!</h6>
+                                <h6 class="text-white mx-3"><strong> Manage Users</strong></h6>
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
                             <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New
                                 User</a>
+                                <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+                                    class="material-icons text-sm">print</i>&nbsp;&nbsp;Export</a>
+                                    <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+                                    class="material-icons text-sm">print</i>&nbsp;&nbsp;Export All</a>
                         </div>
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
