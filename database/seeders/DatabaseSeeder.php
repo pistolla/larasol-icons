@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'password' => ('secret')
         ]);
 
-        $this->call([
-            RoleAndPermissionSeeder::class,
-        ]);
+        // $this->call([
+        //     RoleAndPermissionSeeder::class,
+        // ]);
     }
 }
