@@ -1,6 +1,9 @@
-@extends('code-generator-ui::layouts.app')
-
-@section('content')
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
+    <x-navbars.sidebar activePage='dashboard'></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
+        <!-- End Navbar -->
 
 <?php
     $dataTypes = [
@@ -106,7 +109,7 @@ $generatorTable = null;
         <form method="POST" action="{{ route('generator_tables.generator_table.store') }}" accept-charset="UTF-8"
             id="create_generator_table_form" name="create_generator_table_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('code-generator-ui::generator_tables.form', [
+            @include ('generator_tables.form', [
             'generatorTable' => null,
             'generatorTableField' => null,
             'generatorTableFields' => null,
@@ -228,3 +231,6 @@ $generatorTable = null;
 
 </script>
 @endsection
+
+    </main>
+</x-layout>

@@ -1,14 +1,14 @@
 <?php
 
-namespace Pilabrem\CodeGeneratorUI\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Exception;
-use Pilabrem\CodeGeneratorUI\Models\GeneratorTable;
+use App\Models\GeneratorTable;
 use CrestApps\CodeGenerator\Models\Field;
-use Pilabrem\CodeGeneratorUI\Models\GeneratorTableField;
+use App\Models\GeneratorTableField;
 use Illuminate\Support\Facades\Config;
 
 class GeneratorTablesController extends Controller
@@ -23,7 +23,7 @@ class GeneratorTablesController extends Controller
     {
         $generatorTables = GeneratorTable::paginate(25);
 
-        return view('code-generator-ui::generator_tables.index', compact('generatorTables'));
+        return view('generator_tables.index', compact('generatorTables'));
     }
 
     /**
@@ -33,7 +33,7 @@ class GeneratorTablesController extends Controller
      */
     public function create()
     {
-        return view('code-generator-ui::generator_tables.create');
+        return view('generator_tables.create');
     }
 
 
@@ -96,7 +96,7 @@ class GeneratorTablesController extends Controller
     {
         $generatorTable = GeneratorTable::findOrFail($id);
 
-        return view('code-generator-ui::generator_tables.show', compact('generatorTable'));
+        return view('generator_tables.show', compact('generatorTable'));
     }
 
     /**
@@ -111,7 +111,7 @@ class GeneratorTablesController extends Controller
         $generatorTable = GeneratorTable::findOrFail($id);
         $generatorTableFields = $generatorTable->generatorTableFields;
 
-        return view('code-generator-ui::generator_tables.edit', compact('generatorTable', 'generatorTableFields'));
+        return view('generator_tables.edit', compact('generatorTable', 'generatorTableFields'));
     }
 
     /**

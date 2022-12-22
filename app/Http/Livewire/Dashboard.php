@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Expense;
+use App\Models\Farmer;
 use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Asantibanez\LivewireCharts\Models\RadarChartModel;
 use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
@@ -10,13 +10,13 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public $types = ['food', 'shopping', 'entertainment', 'travel', 'other'];
+    public $types = ['crop', 'livestock', 'fish', 'commercial', 'other'];
 
     public $colors = [
-        'food' => '#f6ad55',
-        'shopping' => '#fc8181',
-        'entertainment' => '#90cdf4',
-        'travel' => '#66DA26',
+        'crop' => '#f6ad55',
+        'livestock' => '#fc8181',
+        'fish' => '#90cdf4',
+        'commercial' => '#66DA26',
         'other' => '#cbd5e0',
     ];
 
@@ -53,16 +53,16 @@ class Dashboard extends Component
 
     public function render()
     {
-        $expenses = Expense::whereIn('type', $this->types)->get();
+        $farmers = Farmer::whereIn('frameworks', $this->types)->get();
 
-        $columnChartModel = $expenses->groupBy('type')
+        $columnChartModel = $farmers->groupBy('frameworks')
             ->reduce(function ($columnChartModel, $data) {
                 $type = $data->first()->type;
-                $value = $data->sum('amount');
+                $value = $data->count();
 
                 return $columnChartModel->addColumn($type, $value, $this->colors[$type]);
             }, LivewireCharts::columnChartModel()
-                ->setTitle('Expenses by Type')
+                ->setTitle('Farmers by Type')
                 ->setAnimated($this->firstRun)
                 ->withOnColumnClickEventName('onColumnClick')
                 ->setLegendVisibility(false)
@@ -73,14 +73,14 @@ class Dashboard extends Component
                 ->withGrid()
             );
 
-        $pieChartModel = $expenses->groupBy('type')
+        $pieChartModel = $farmers->groupBy('type')
             ->reduce(function ($pieChartModel, $data) {
                 $type = $data->first()->type;
-                $value = $data->sum('amount');
+                $value = $data->count();
 
                 return $pieChartModel->addSlice($type, $value, $this->colors[$type]);
             }, LivewireCharts::pieChartModel()
-                //->setTitle('Expenses by Type')
+                //->setTitle('Farmers by Type')
                 ->setAnimated($this->firstRun)
                 ->setType('donut')
                 ->withOnSliceClickEvent('onSliceClick')
@@ -91,23 +91,23 @@ class Dashboard extends Component
                 ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
             );
 
-        $lineChartModel = $expenses
-            ->reduce(function ($lineChartModel, $data) use ($expenses) {
-                $index = $expenses->search($data);
+        $lineChartModel = $farmers
+            ->reduce(function ($lineChartModel, $data) use ($farmers) {
+                $index = $farmers->search($data);
 
-                $amountSum = $expenses->take($index + 1)->sum('amount');
+                $ageSum = $farmers->take($index + 1)->sum('cv');
 
                 if ($index == 6) {
-                    $lineChartModel->addMarker(7, $amountSum);
+                    $lineChartModel->addMarker(7, $ageSum);
                 }
 
                 if ($index == 11) {
-                    $lineChartModel->addMarker(12, $amountSum);
+                    $lineChartModel->addMarker(12, $ageSum);
                 }
 
-                return $lineChartModel->addPoint($index, $data->amount, ['id' => $data->id]);
+                return $lineChartModel->addPoint($index, $data->age, ['id' => $data->id]);
             }, LivewireCharts::lineChartModel()
-                //->setTitle('Expenses Evolution')
+                //->setTitle('Farmers Evolution')
                 ->setAnimated($this->firstRun)
                 ->withOnPointClickEvent('onPointClick')
                 ->setSmoothCurve()
@@ -116,12 +116,12 @@ class Dashboard extends Component
                 ->sparklined()
             );
 
-        $areaChartModel = $expenses
-            ->reduce(function ($areaChartModel, $data) use ($expenses) {
-                $index = $expenses->search($data);
-                return $areaChartModel->addPoint($index, $data->amount, ['id' => $data->id]);
+        $areaChartModel = $farmers
+            ->reduce(function ($areaChartModel, $data) use ($farmers) {
+                $index = $farmers->search($data);
+                return $areaChartModel->addPoint($index, $data->age, ['id' => $data->id]);
             }, LivewireCharts::areaChartModel()
-                //->setTitle('Expenses Peaks')
+                //->setTitle('Farmers Peaks')
                 ->setAnimated($this->firstRun)
                 ->setColor('#f6ad55')
                 ->withOnPointClickEvent('onAreaPointClick')
@@ -130,14 +130,14 @@ class Dashboard extends Component
                 ->sparklined()
             );
 
-        $multiLineChartModel = $expenses
-            ->reduce(function ($multiLineChartModel, $data) use ($expenses) {
-                $index = $expenses->search($data);
+        $multiLineChartModel = $farmers
+            ->reduce(function ($multiLineChartModel, $data) use ($farmers) {
+                $index = $farmers->search($data);
 
                 return $multiLineChartModel
-                    ->addSeriesPoint($data->type, $index, $data->amount,  ['id' => $data->id]);
+                    ->addSeriesPoint($data->type, $index, $data->age,  ['id' => $data->id]);
             }, LivewireCharts::multiLineChartModel()
-                //->setTitle('Expenses by Type')
+                //->setTitle('Farmers by Type')
                 ->setAnimated($this->firstRun)
                 ->withOnPointClickEvent('onPointClick')
                 ->setSmoothCurve()
@@ -147,12 +147,12 @@ class Dashboard extends Component
                 ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
             );
 
-        $multiColumnChartModel = $expenses->groupBy('type')
+        $multiColumnChartModel = $farmers->groupBy('type')
             ->reduce(function ($multiColumnChartModel, $data) {
                 $type = $data->first()->type;
 
                 return $multiColumnChartModel
-                    ->addSeriesColumn($type, 1, $data->sum('amount'));
+                    ->addSeriesColumn($type, 1, $data->sum('age'));
             }, LivewireCharts::multiColumnChartModel()
                 ->setAnimated($this->firstRun)
                 ->setDataLabelsEnabled($this->showDataLabels)
@@ -162,21 +162,21 @@ class Dashboard extends Component
                 ->withGrid()
             );
 
-        $radarChartModel = $expenses
-            ->reduce(function (RadarChartModel $radarChartModel, $data) use ($expenses) {
-                return $radarChartModel->addSeries($data->first()->type, $data->description, $data->amount);
+        $radarChartModel = $farmers
+            ->reduce(function (RadarChartModel $radarChartModel, $data) use ($farmers) {
+                return $radarChartModel->addSeries($data->first()->type, $data->description, $data->age);
             }, LivewireCharts::radarChartModel()
                 ->setAnimated($this->firstRun)
             );
 
-        $treeChartModel = $expenses->groupBy('type')
+        $treeChartModel = $farmers->groupBy('type')
             ->reduce(function (TreeMapChartModel $chartModel, $data) {
                 $type = $data->first()->type;
-                $value = $data->sum('amount');
+                $value = $data->sum('age');
 
                 return $chartModel->addBlock($type, $value)->addColor($this->colors[$type]);
             }, LivewireCharts::treeMapChartModel()
-                ->setTitle('Expenses Weight')
+                ->setTitle('Farmers Weight')
                 ->setAnimated($this->firstRun)
                 ->setDistributed(true)
                 ->withOnBlockClickEvent('onBlockClick')

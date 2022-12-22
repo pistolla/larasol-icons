@@ -119,21 +119,21 @@
      
          <div class="step-three">
              <div class="card">
-                 <div class="card-header bg-secondary text-white">STEP 3/4 - Frameworks experience</div>
+                 <div class="card-header bg-secondary text-white">STEP 3/4 - Type of Farming</div>
                  <div class="card-body">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo, impedit maxime possimus excepturi veniam ut error sit, molestias aliquam repellat eos porro? Sit ex voluptates nemo veritatis delectus quia?
+                     Select the type of Farming undertaken by Farmer
                      <div class="frameworks d-flex flex-column align-items-left mt-2">
-                         <label for="laravel">
-                             <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                         <label for="crop">
+                             <input type="checkbox" id="crop" value="crop" wire:model="frameworks"> Crop Farming
                          </label>
-                         <label for="codeigniter">
-                            <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
+                         <label for="livestock">
+                            <input type="checkbox" id="livestock" value="livestock" wire:model="frameworks"> Livestock Farming
                         </label>
-                        <label for="vuejs">
-                            <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
+                        <label for="fish">
+                            <input type="checkbox" id="fish" value="fish" wire:model="frameworks"> Fish Farming
                         </label>
-                        <label for="cakePHP">
-                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
+                        <label for="commercial">
+                            <input type="checkbox" id="commercial" value="commercial" wire:model="frameworks"> Commercial Farming
                         </label>
                      </div>
                      <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
@@ -150,9 +150,9 @@
              <div class="card">
                  <div class="card-header bg-secondary text-white">STEP 4/4 - Attachments</div>
                  <div class="card-body">
-                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque delectus officia inventore id facere at aspernatur ad corrupti asperiores placeat, fugiat tempora soluta optio recusandae eligendi impedit ipsam ullam amet!
+                     Upload image of the farmer on the farm
                      <div class="form-group">
-                         <label for="cv">CV</label>
+                         <label for="cv">Farmer on Farm Image</label>
                          <input type="file" class="form-control" wire:model="cv">
                          <span class="text-danger">@error('cv'){{ $message }}@enderror</span>
                      </div>
@@ -179,11 +179,11 @@
             @endif
             
             @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
-                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
+                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Validate</button>
             @endif
             
             @if ($currentStep == 4)
-                 <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                 <button type="submit" class="btn btn-md btn-primary">SAVE</button>
             @endif
                 
                

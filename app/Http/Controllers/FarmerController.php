@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FarmersExport;
 use Illuminate\Http\Request;
+use Excel;
 
 class FarmerController extends Controller
 {
@@ -80,5 +82,15 @@ class FarmerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportCSV() {
+        $file_name = 'farmers_'.date('Y-m-d H:i:s').'.csv';
+        return Excel::download(new FarmersExport, $file_name);
+    }
+
+    public function exportExcel() {
+        $file_name = 'farmers_'.date('Y-m-d H:i:s').'.xlsx';
+        return Excel::download(new FarmersExport, $file_name);
     }
 }

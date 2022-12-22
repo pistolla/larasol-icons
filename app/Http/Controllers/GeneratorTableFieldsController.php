@@ -1,13 +1,13 @@
 <?php
 
-namespace Pilabrem\CodeGeneratorUI\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Exception;
-use Pilabrem\CodeGeneratorUI\Models\GeneratorTable;
-use Pilabrem\CodeGeneratorUI\Models\GeneratorTableField;
+use App\Models\GeneratorTable;
+use App\Models\GeneratorTableField;
 use Illuminate\Support\Facades\Config;
 
 class GeneratorTableFieldsController extends Controller
@@ -34,7 +34,7 @@ class GeneratorTableFieldsController extends Controller
             $generatorTableFields = GeneratorTableField::with('generatortable')->paginate(25);
         }
 
-        return view('code-generator-ui::generator_table_fields.index', compact('generatorTableFields', 'table', 'tableId'));
+        return view('generator_table_fields.index', compact('generatorTableFields', 'table', 'tableId'));
     }
 
     /**
@@ -53,7 +53,7 @@ class GeneratorTableFieldsController extends Controller
         }
         $generatorTables = GeneratorTable::pluck('name', 'id')->all();
 
-        return view('code-generator-ui::generator_table_fields.create', compact('generatorTables', 'table', 'tableId'));
+        return view('generator_table_fields.create', compact('generatorTables', 'table', 'tableId'));
     }
 
     /**
@@ -86,7 +86,7 @@ class GeneratorTableFieldsController extends Controller
         $table = $generatorTableField->generatortable->name;
         $tableId = $generatorTableField->generator_table_id;
 
-        return view('code-generator-ui::generator_table_fields.show', compact('generatorTableField', 'table', 'tableId'));
+        return view('generator_table_fields.show', compact('generatorTableField', 'table', 'tableId'));
     }
 
     /**
@@ -105,7 +105,7 @@ class GeneratorTableFieldsController extends Controller
         $tableId = $generatorTableField->generator_table_id;
 
 
-        return view('code-generator-ui::generator_table_fields.edit', compact('generatorTableField', 'generatorTables', 'table', 'tableId'));
+        return view('generator_table_fields.edit', compact('generatorTableField', 'generatorTables', 'table', 'tableId'));
     }
 
     /**

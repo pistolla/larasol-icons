@@ -3,6 +3,11 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\GeneratorTablesController;
+use App\Http\Controllers\GeneratorTableFieldsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,14 +70,14 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group([
-    'middleware' => ['auth', 'verified'],
+    'middleware' => ['auth'],
 ], function () {
-    Route::resource('user', 'UserController');
-    Route::resource('role', 'RoleController');
-    Route::resource('permission', 'PermissionController');
-    Route::get('edit-account-info', 'UserController@accountInfo')->name('admin.account.info');
-    Route::post('edit-account-info', 'UserController@accountInfoStore')->name('admin.account.info.store');
-    Route::post('change-password', 'UserController@changePasswordStore')->name('admin.account.password.store');
+    Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
+    Route::get('edit-account-info', [UserController::class, 'accountInfo'])->name('admin.account.info');
+    Route::post('edit-account-info', [UserController::class, 'accountInfoStore'])->name('admin.account.info.store');
+    Route::post('change-password', [UserController::class, 'changePasswordStore'])->name('admin.account.password.store');
 });
 
 
@@ -80,19 +85,19 @@ Route::group([
     'prefix' => 'setup/data',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/', 'GeneratorTablesController@index')
+    Route::get('/', [GeneratorTablesController::class,'index'])
          ->name('generator_tables.generator_table.index');
-    Route::get('/create','GeneratorTablesController@create')
+    Route::get('/create',[GeneratorTablesController::class, 'create'])
          ->name('generator_tables.generator_table.create');
-    Route::get('/show/{generatorTable}','GeneratorTablesController@show')
+    Route::get('/show/{generatorTable}',[GeneratorTablesController::class, 'show'])
          ->name('generator_tables.generator_table.show');
-    Route::get('/{generatorTable}/edit','GeneratorTablesController@edit')
+    Route::get('/{generatorTable}/edit',[GeneratorTablesController::class, 'edit'])
          ->name('generator_tables.generator_table.edit');
-    Route::post('/', 'GeneratorTablesController@store')
+    Route::post('/', [GeneratorTablesController::class, 'store'])
          ->name('generator_tables.generator_table.store');
-    Route::put('generator_table/{generatorTable}', 'GeneratorTablesController@update')
+    Route::put('generator_table/{generatorTable}', [GeneratorTablesController::class,'update'])
          ->name('generator_tables.generator_table.update');
-    Route::delete('/generator_table/{generatorTable}','GeneratorTablesController@destroy')
+    Route::delete('/generator_table/{generatorTable}',[GeneratorTablesController::class,'destroy'])
          ->name('generator_tables.generator_table.destroy');
 });
 
@@ -100,19 +105,19 @@ Route::group([
     'prefix' => 'setup/data/field',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/', 'GeneratorTableFieldsController@index')
+    Route::get('/', [GeneratorTableFieldsController::class,'index'])
          ->name('generator_table_fields.generator_table_field.index');
-    Route::get('/create','GeneratorTableFieldsController@create')
+    Route::get('/create',[GeneratorTableFieldsController::class,'create'])
          ->name('generator_table_fields.generator_table_field.create');
-    Route::get('/show/{generatorTableField}','GeneratorTableFieldsController@show')
+    Route::get('/show/{generatorTableField}',[GeneratorTableFieldsController::class,'show'])
          ->name('generator_table_fields.generator_table_field.show')->where('id', '[0-9]+');
-    Route::get('/{generatorTableField}/edit','GeneratorTableFieldsController@edit')
+    Route::get('/{generatorTableField}/edit',[GeneratorTableFieldsController::class,'edit'])
          ->name('generator_table_fields.generator_table_field.edit')->where('id', '[0-9]+');
-    Route::post('/', 'GeneratorTableFieldsController@store')
+    Route::post('/', [GeneratorTableFieldsController::class,'store'])
          ->name('generator_table_fields.generator_table_field.store');
-    Route::put('generator_table_field/{generatorTableField}', 'GeneratorTableFieldsController@update')
+    Route::put('generator_table_field/{generatorTableField}', [GeneratorTableFieldsController::class,'update'])
          ->name('generator_table_fields.generator_table_field.update')->where('id', '[0-9]+');
-    Route::delete('/generator_table_field/{generatorTableField}','GeneratorTableFieldsController@destroy')
+    Route::delete('/generator_table_field/{generatorTableField}',[GeneratorTableFieldsController::class,'destroy'])
          ->name('generator_table_fields.generator_table_field.destroy')->where('id', '[0-9]+');
 });
 
@@ -121,13 +126,13 @@ Route::group([
     'prefix' => 'setup/data/generate',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/config/{table}', 'GeneratorTableFieldsController@generateConfig')
+    Route::get('/config/{table}', [GeneratorTableFieldsController::class,'generateConfig'])
          ->name('generator_table_fields.generator_table_field.config');
-    Route::get('/resources/{table}','GeneratorTableFieldsController@generateResources')
+    Route::get('/resources/{table}',[GeneratorTableFieldsController::class,'generateResources'])
          ->name('generator_table_fields.generator_table_field.resources');
 
-    Route::get('/config', 'GeneratorTablesController@generateConfig')
+    Route::get('/config', [GeneratorTablesController::class,'generateConfig'])
         ->name('generator_tables.generator_table.config');
-    Route::get('/resources','GeneratorTablesController@generateResources')
+    Route::get('/resources',[GeneratorTablesController::class,'generateResources'])
         ->name('generator_tables.generator_table.resources');
 });
