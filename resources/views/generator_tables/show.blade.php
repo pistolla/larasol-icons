@@ -4,7 +4,7 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
+        <div class="container-fluid py-4">
 <div class="panel panel-default">
     <div class="panel-heading clearfix">
 
@@ -67,6 +67,7 @@
 
     </div>
 </div>
-
+<x-footers.auth></x-footers.auth>
+</div>
     </main>
 </x-layout>

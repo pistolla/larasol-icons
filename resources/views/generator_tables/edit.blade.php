@@ -4,7 +4,7 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
+        <div class="container-fluid py-4">
 <?php
     $dataTypes = [
     'char' => 'Char',
@@ -127,10 +127,7 @@ $generatorTableField = null;
         </div>
     </div>
 
-@endsection
-
-
-@section('script')
+    @push('js')
 <script>
     // Initialiser le formulaire
     $('.data_type').each(function(i, obj) {
@@ -241,6 +238,8 @@ $generatorTableField = null;
     // Gérer les suppressions de lignes
 
 </script>
-@endsection
+@endpush
+<x-footers.auth></x-footers.auth>
+</div>
     </main>
 </x-layout>

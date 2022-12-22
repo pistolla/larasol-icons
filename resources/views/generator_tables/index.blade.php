@@ -4,7 +4,7 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
-
+        <div class="container-fluid py-4">
 @if(Session::has('success_message'))
 <div class="alert alert-success">
     <span class="glyphicon glyphicon-ok"></span>
@@ -142,10 +142,7 @@
     @endif
 
 </div>
-@endsection
-
-@section('script')
-@endsection
-
+<x-footers.auth></x-footers.auth>
+</div>
     </main>
 </x-layout>
