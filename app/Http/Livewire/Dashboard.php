@@ -57,7 +57,7 @@ class Dashboard extends Component
 
         $columnChartModel = $farmers->groupBy('frameworks')
             ->reduce(function ($columnChartModel, $data) {
-                $type = $data->first()->type;
+                $type = $data->first()->frameworks;
                 $value = $data->count();
 
                 return $columnChartModel->addColumn($type, $value, $this->colors[$type]);
@@ -73,9 +73,9 @@ class Dashboard extends Component
                 ->withGrid()
             );
 
-        $pieChartModel = $farmers->groupBy('type')
+        $pieChartModel = $farmers->groupBy('frameworks')
             ->reduce(function ($pieChartModel, $data) {
-                $type = $data->first()->type;
+                $type = $data->first()->frameworks;
                 $value = $data->count();
 
                 return $pieChartModel->addSlice($type, $value, $this->colors[$type]);
@@ -91,21 +91,13 @@ class Dashboard extends Component
                 ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
             );
 
-        $lineChartModel = $farmers
-            ->reduce(function ($lineChartModel, $data) use ($farmers) {
-                $index = $farmers->search($data);
+        $lineChartModel = $farmers->groupBy('frameworks')
+            ->reduce(function ($lineChartModel, $data, $index) use ($farmers) {
 
-                $ageSum = $farmers->take($index + 1)->sum('cv');
+                $type = $data->first()->frameworks;
+                $value = $data->count();
 
-                if ($index == 6) {
-                    $lineChartModel->addMarker(7, $ageSum);
-                }
-
-                if ($index == 11) {
-                    $lineChartModel->addMarker(12, $ageSum);
-                }
-
-                return $lineChartModel->addPoint($index, $data->age, ['id' => $data->id]);
+                return $lineChartModel->addPoint($index, $value, ['id' => $index]);
             }, LivewireCharts::lineChartModel()
                 //->setTitle('Farmers Evolution')
                 ->setAnimated($this->firstRun)
@@ -135,7 +127,7 @@ class Dashboard extends Component
                 $index = $farmers->search($data);
 
                 return $multiLineChartModel
-                    ->addSeriesPoint($data->type, $index, $data->age,  ['id' => $data->id]);
+                    ->addSeriesPoint($data->frameworks, $index, $data->age,  ['id' => $data->id]);
             }, LivewireCharts::multiLineChartModel()
                 //->setTitle('Farmers by Type')
                 ->setAnimated($this->firstRun)
@@ -147,9 +139,9 @@ class Dashboard extends Component
                 ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
             );
 
-        $multiColumnChartModel = $farmers->groupBy('type')
+        $multiColumnChartModel = $farmers->groupBy('frameworks')
             ->reduce(function ($multiColumnChartModel, $data) {
-                $type = $data->first()->type;
+                $type = $data->first()->frameworks;
 
                 return $multiColumnChartModel
                     ->addSeriesColumn($type, 1, $data->sum('age'));
@@ -164,14 +156,14 @@ class Dashboard extends Component
 
         $radarChartModel = $farmers
             ->reduce(function (RadarChartModel $radarChartModel, $data) use ($farmers) {
-                return $radarChartModel->addSeries($data->first()->type, $data->description, $data->age);
+                return $radarChartModel->addSeries($data->first()->frameworks, $data->description, $data->age);
             }, LivewireCharts::radarChartModel()
                 ->setAnimated($this->firstRun)
             );
 
-        $treeChartModel = $farmers->groupBy('type')
+        $treeChartModel = $farmers->groupBy('frameworks')
             ->reduce(function (TreeMapChartModel $chartModel, $data) {
-                $type = $data->first()->type;
+                $type = $data->first()->frameworks;
                 $value = $data->sum('age');
 
                 return $chartModel->addBlock($type, $value)->addColor($this->colors[$type]);

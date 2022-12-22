@@ -6,24 +6,30 @@
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row mb-4">
-                <ul class="flex flex-col sm:flex-row sm:space-x-8 sm:items-center">
-                    <li>
-                        <input type="checkbox" value="travel" wire:model="types"/>
-                        <span>Select County</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" value="shopping" wire:model="types"/>
-                        <span>Select Sub County</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" value="food" wire:model="types"/>
-                        <span>Select Ward</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" value="entertainment" wire:model="types"/>
-                        <span>Select Registration Status</span>
-                    </li>
-                </ul>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="input-group input-group-outline">
+                            <input type="checkbox" value="travel" wire:model="types"/>
+                            <span>Select County</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="input-group input-group-outline">
+                            <input type="checkbox" value="shopping" wire:model="types"/>
+                            <span>Select Sub County</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="input-group input-group-outline">
+                            <input type="checkbox" value="food" wire:model="types"/>
+                            <span>Select Ward</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="input-group input-group-outline">
+                            <input type="checkbox" value="entertainment" wire:model="types"/>
+                            <span>Select Registration Status</span>
+                    </div>
+                </div>
             </div>
 
             <livewire:dashboard/>
