@@ -34,19 +34,19 @@
         <div class="btn-group btn-group-sm pull-right" role="group">
             <a href="{{ route('generator_tables.generator_table.create') }}" class="btn btn-success"
                 title="Add Table model">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <i class="material-icons opacity-10">add</i> Add Table model
             </a>
             <a href="{{ route('generator_tables.generator_table.config') }}" class="btn btn-info"
                 title="Create resource file">
-                <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>
+                <i class="material-icons opacity-10">file</i> Create resource file
             </a>
             <a href="{{ route('generator_tables.generator_table.resources') }}" class="btn btn-warning"
                 title="Scaffold">
-                <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                <i class="material-icons opacity-10">make</i> Scaffold
             </a>
             <a href="{{ route('generator_tables.generator_table.resources', ['option' => 'migrate']) }}"
                 class="btn btn-danger" title="Scaffold And migrate">
-                <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                <i class="material-icons opacity-10">save</i> Scaffold And migrate
             </a>
         </div>
 
@@ -97,30 +97,30 @@
                                 <div class="btn-group btn-group-xs pull-left" role="group">
                                     <a href="{{ route('generator_table_fields.generator_table_field.config', $generatorTable->id) }}"
                                         class="btn btn-info" title="Create resource file">
-                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>
+                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>Create Schema
                                     </a>
                                     <a href="{{ route('generator_table_fields.generator_table_field.resources', $generatorTable->id) }}"
                                         class="btn btn-warning" title="Scaffold">
-                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>Create Table
                                     </a>
                                     <a href="{{ route('generator_table_fields.generator_table_field.resources', [$generatorTable->id, 'option' => 'migrate']) }}"
                                         class="btn btn-danger" title="Scaffold And migrate">
-                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>Migrate Table
                                     </a>
                                 </div>
 
                                 <div class="btn-group btn-group-xs pull-right" role="group">
                                     <a href="{{ route('generator_table_fields.generator_table_field.index', ['table'=>$generatorTable->id]) }}"
                                         class="btn btn-info" title="Manage Table Model">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Fields
                                     </a>
                                     <a href="{{ route('generator_tables.generator_table.edit', $generatorTable->id ) }}"
                                         class="btn btn-primary" title="Edit table model">
-                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit
                                     </a>
                                     <button type="submit" class="btn btn-danger" title="Delete table model"
                                         onclick="return confirm('Delete this table model?')">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
                                     </button>
                                 </div>
 

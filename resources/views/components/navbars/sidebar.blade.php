@@ -45,7 +45,7 @@
                 <a class="nav-link text-white {{ $activePage == 'user-management' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('user-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">persons</i>
+                        <i class="material-icons opacity-10">people</i>
                     </div>
                     <span class="nav-link-text ms-1">User Management</span>
                 </a>
@@ -63,7 +63,7 @@
                 <a class="nav-link text-white {{ $activePage == 'permission.index' ? 'active bg-gradient-primary' : '' }} "
                     href="{{ route('permission.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">key</i>
+                        <i class="material-icons opacity-10">lock</i>
                     </div>
                     <span class="nav-link-text ms-1">User Permissions</span>
                 </a>

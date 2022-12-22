@@ -7,6 +7,9 @@
     <x-admin.add-link href="{{ route('role.create') }}">
         {{ __('Add Role') }}
     </x-admin.add-link>
+    <x-admin.add-link href="{{ route('user.index') }}">
+        {{ __('Assign Role') }}
+    </x-admin.add-link>
     @endcan
 
     <div class="py-2">

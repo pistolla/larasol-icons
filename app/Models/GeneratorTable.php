@@ -56,7 +56,7 @@ class GeneratorTable extends Model
      */
     public function generatorTableFields()
     {
-        return $this->hasMany('Pilabrem\CodeGeneratorUI\Models\GeneratorTableField');
+        return $this->hasMany('App\Models\GeneratorTableField');
     }
 
 }
