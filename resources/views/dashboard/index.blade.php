@@ -5,45 +5,19 @@
         <x-navbars.navs.auth titlePage="Dashboard"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <div class="row mb-4">
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="input-group input-group-outline">
-                            <input type="checkbox" value="travel" wire:model="types"/>
-                            <span>Select County</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="input-group input-group-outline">
-                            <input type="checkbox" value="shopping" wire:model="types"/>
-                            <span>Select Sub County</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="input-group input-group-outline">
-                            <input type="checkbox" value="food" wire:model="types"/>
-                            <span>Select Ward</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="input-group input-group-outline">
-                            <input type="checkbox" value="entertainment" wire:model="types"/>
-                            <span>Select Registration Status</span>
-                    </div>
-                </div>
-            </div>
 
             <livewire:dashboard/>
-            
-            <livewire:scripts />
             
             <x-footers.auth></x-footers.auth>
         </div>
     </main>
     <x-plugins></x-plugins>
     </div>
-    @livewireChartsScripts
     @push('js')
+    @livewireChartsScripts
     <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script>
+    <script src="{{ asset('assets') }}/js/alpinejs.min.js"></script>
+    <script src="{{ asset('assets') }}/js/apexcharts.min.js"></script>
     <script>
         var ctx = document.getElementById("chart-bars").getContext("2d");
 

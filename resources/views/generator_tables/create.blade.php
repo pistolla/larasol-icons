@@ -87,7 +87,7 @@ $generatorTable = null;
             </h4>
         </span>
 
-        <div class="btn-group btn-group-sm pull-right" role="group">
+        <div class="me-3 my-3 text-end" role="group">
             <a href="{{ route('generator_tables.generator_table.index') }}" class="btn btn-primary"
                 title="Afficher tous les Generator Table">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>

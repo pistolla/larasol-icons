@@ -19,7 +19,7 @@
                     <i style="color:#ddd;" class="glyphicon glyphicon-arrow-right"></i> Edition
                 </h4>
             </div>
-            <div class="btn-group btn-group-sm pull-right" role="group">
+            <div class="me-3 my-3 text-end" role="group">
 
                 <a href="{{ route('generator_table_fields.generator_table_field.index', ['table' => $tableId]) }}" class="btn btn-primary" title="Afficher tous les champs">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>

@@ -28,27 +28,10 @@
     <div class="panel-heading clearfix">
 
         <div class="pull-left">
-            <h4 class="mt-5 mb-5"><a href="{{route('generator_tables.generator_table.index')}}"> Tables </a></h4>
+            <h4 class="mt-5 mb-5"><a href="{{route('generator_tables.generator_table.index')}}"> DATA Tables </a></h4>
         </div>
 
-        <div class="btn-group btn-group-sm pull-right" role="group">
-            <a href="{{ route('generator_tables.generator_table.create') }}" class="btn btn-success"
-                title="Add Table model">
-                <i class="material-icons opacity-10">add</i> Add Table model
-            </a>
-            <a href="{{ route('generator_tables.generator_table.config') }}" class="btn btn-info"
-                title="Create resource file">
-                <i class="material-icons opacity-10">file</i> Create resource file
-            </a>
-            <a href="{{ route('generator_tables.generator_table.resources') }}" class="btn btn-warning"
-                title="Scaffold">
-                <i class="material-icons opacity-10">make</i> Scaffold
-            </a>
-            <a href="{{ route('generator_tables.generator_table.resources', ['option' => 'migrate']) }}"
-                class="btn btn-danger" title="Scaffold And migrate">
-                <i class="material-icons opacity-10">save</i> Scaffold And migrate
-            </a>
-        </div>
+        
 
     </div>
 
@@ -77,7 +60,7 @@
                 <tbody>
                     @foreach($generatorTables as $generatorTable)
                     <tr>
-                        <td>{{ $generatorTable->name }}</td>
+                        <td><a href={{ route(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name)).'.'.strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name)).'.index') }}> {{ $generatorTable->name }}</a></td>
                         <td>{{ $generatorTable->table_name }}</td>
                         <td>{{ ($generatorTable->with_migration) ? 'Yes' : 'No' }}</td>
                         <td>{{ ($generatorTable->with_form_request) ? 'Yes' : 'No' }}</td>
@@ -116,11 +99,11 @@
                                     </a>
                                     <a href="{{ route('generator_tables.generator_table.edit', $generatorTable->id ) }}"
                                         class="btn btn-primary" title="Edit table model">
-                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>Edit
                                     </a>
                                     <button type="submit" class="btn btn-danger" title="Delete table model"
                                         onclick="return confirm('Delete this table model?')">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>Delete
                                     </button>
                                 </div>
 
@@ -135,8 +118,27 @@
         </div>
     </div>
 
-    <div class="panel-footer">
+    <div class="panel-footer mt-4">
         {!! $generatorTables->render() !!}
+
+        <div class="me-3 my-3 text-end" role="group">
+            <a href="{{ route('generator_tables.generator_table.create') }}" class="btn btn-success"
+                title="Add Table model">
+                <i class="material-icons opacity-10">add</i> Add Table model
+            </a>
+            <a href="{{ route('generator_tables.generator_table.config') }}" class="btn btn-info"
+                title="Create resource file">
+                <i class="material-icons opacity-10">file</i> Create resource file
+            </a>
+            <a href="{{ route('generator_tables.generator_table.resources') }}" class="btn btn-warning"
+                title="Scaffold">
+                <i class="material-icons opacity-10">make</i> Scaffold
+            </a>
+            <a href="{{ route('generator_tables.generator_table.resources', ['option' => 'migrate']) }}"
+                class="btn btn-danger" title="Scaffold And migrate">
+                <i class="material-icons opacity-10">save</i> Scaffold And migrate
+            </a>
+        </div>
     </div>
 
     @endif

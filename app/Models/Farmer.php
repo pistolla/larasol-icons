@@ -13,16 +13,19 @@ class Farmer extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'national_id',
         'first_name',
         'last_name',
         'gender',
-        'age',
+        'dob',
         'email',
         'phone',
-        'description',
-        'country',
-        'city',
-        'frameworks',
-        'cv'
+        'status',
+        'county',
+        'ward',
+        'village',
+        'farm_type',
+        'produce',
+        'farm_house',
     ];
 }

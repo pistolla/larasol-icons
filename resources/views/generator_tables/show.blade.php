@@ -31,11 +31,11 @@
                     </a>
 
                     <a href="{{ route('generator_tables.generator_table.edit', $generatorTable->id ) }}" class="btn btn-primary" title="Modifier Generator Table">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Supprimer Generator Table" onclick="return confirm(&quot;Supprimer Generator Table??&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>

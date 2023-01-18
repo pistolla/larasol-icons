@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "model-name": "County",
+        "resource-file": "counties.json"
+    },
+    {
+        "model-name": "FarmTypes",
+        "resource-file": "farm_types.json"
+    },
+    {
+        "model-name": "Counties",
+        "resource-file": "counties.json"
+    },
+    {
+        "model-name": "Produces",
+        "resource-file": "produces.json"
+    },
+    {
+        "model-name": "Wards",
+        "resource-file": "wards.json"
+    }
+]

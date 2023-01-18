@@ -1,15 +1,7 @@
 <x-layout bodyClass="">
 
     <div>
-        <div class="container position-sticky z-index-sticky top-0">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Navbar -->
-                    <x-navbars.navs.guest signin='login' signup='register'></x-navbars.navs.guest>
-                    <!-- End Navbar -->
-                </div>
-            </div>
-        </div>
+        
         <main class="main-content  mt-0">
             <section>
                 <div class="page-header min-vh-100">
@@ -18,7 +10,7 @@
                             <div
                                 class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
                                 <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
-                                    style="background-image: url('../assets/img/illustrations/illustration-signup.jpg'); background-size: cover;">
+                                    style="background-image: url('assets/img/ivancik.jpg'); background-size: cover;">
                                 </div>
                             </div>
                             <div

@@ -38,7 +38,7 @@
                 @isset($table) {{$table}} @else Champs @endisset</h4>
         </div>
 
-        <div class="btn-group btn-group-sm pull-right" role="group">
+        <div class="me-3 my-3 text-end" role="group">
             <a href="{{ route('generator_table_fields.generator_table_field.create', ['table' => $tableId]) }}"
                 class="btn btn-success" title="Add field">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -106,12 +106,12 @@
                                     </a>
                                     <a href="{{ route('generator_table_fields.generator_table_field.edit', [$generatorTableField->id, 'table' => $tableId] ) }}"
                                         class="btn btn-primary" title="Edit field">
-                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                     </a>
 
                                     <button type="submit" class="btn btn-danger" title="Remove Field from Table Model"
                                         onclick="return confirm('Delete this field?')">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                     </button>
                                 </div>
 

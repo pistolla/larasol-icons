@@ -77,7 +77,7 @@ class GeneratorTableField extends Model
      */
     public function generatorTable()
     {
-        return $this->belongsTo('Pilabrem\CodeGeneratorUI\Models\GeneratorTable','generator_table_id');
+        return $this->belongsTo('App\Models\GeneratorTable','generator_table_id');
     }
 
 }

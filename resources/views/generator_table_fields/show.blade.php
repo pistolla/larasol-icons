@@ -33,11 +33,11 @@
                     </a>
 
                     <a href="{{ route('generator_table_fields.generator_table_field.edit', [$generatorTableField->id, 'table' => $tableId] ) }}" class="btn btn-primary" title="Modifier Generator Table Field">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Supprimer Generator Table Field" onclick="return confirm('Supprimer ce champ??')">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>
