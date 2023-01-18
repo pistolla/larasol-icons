@@ -48,11 +48,6 @@
                     <tr>
                         <th>Model Name</th>
                         <th>Table Name</th>
-                        <th>With Migration</th>
-                        <th>With Form Request</th>
-                        <th>With Soft Delete</th>
-                        <th>Models Per Page</th>
-                        <th>Translation For</th>
                         <th>Primary Key</th>
                         <th></th>
                     </tr>
@@ -60,13 +55,8 @@
                 <tbody>
                     @foreach($generatorTables as $generatorTable)
                     <tr>
-                        <td><a href={{ route(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name)).'.'.strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name)).'.index') }}> {{ $generatorTable->name }}</a></td>
+                        <td><a href={{ route(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name == 'Program' ? 'Programs' : $generatorTable->name)).'.'.strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $generatorTable->name)).'.index') }}> {{ $generatorTable->name }}</a></td>
                         <td>{{ $generatorTable->table_name }}</td>
-                        <td>{{ ($generatorTable->with_migration) ? 'Yes' : 'No' }}</td>
-                        <td>{{ ($generatorTable->with_form_request) ? 'Yes' : 'No' }}</td>
-                        <td>{{ ($generatorTable->with_soft_delete) ? 'Yes' : 'No' }}</td>
-                        <td>{{ $generatorTable->models_per_page }}</td>
-                        <td>{{ $generatorTable->translation_for }}</td>
                         <td>{{ $generatorTable->primary_key }}</td>
 
                         <td>

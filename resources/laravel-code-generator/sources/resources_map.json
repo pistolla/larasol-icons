@@ -18,5 +18,9 @@
     {
         "model-name": "Wards",
         "resource-file": "wards.json"
+    },
+    {
+        "model-name": "Program",
+        "resource-file": "programs.json"
     }
 ]

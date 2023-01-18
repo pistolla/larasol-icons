@@ -14,6 +14,7 @@ use App\Http\Controllers\WardsController;
 use App\Http\Controllers\FarmTypesController;
 use App\Http\Controllers\ProducesController;
 use App\Http\Controllers\FarmerController;
+use App\Http\Controllers\ProgramsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -250,20 +251,21 @@ Route::group([
 });
 
 Route::group([
-     'prefix' => 'program',
- ], function () {
-     Route::get('/', [ProducesController::class, 'index'])
-          ->name('program.program.index');
-     Route::get('/create', [ProducesController::class, 'create'])
-          ->name('program.program.create');
-     Route::get('/show/{program}',[ProducesController::class, 'show'])
-          ->name('program.program.show')->where('id', '[0-9]+');
-     Route::get('/{program}/edit',[ProducesController::class, 'edit'])
-          ->name('program.program.edit')->where('id', '[0-9]+');
-     Route::post('/', [ProducesController::class, 'store'])
-          ->name('program.program.store');
-     Route::put('program/{program}', [ProducesController::class, 'update'])
-          ->name('program.program.update')->where('id', '[0-9]+');
-     Route::delete('/program/{program}',[ProducesController::class, 'destroy'])
-          ->name('program.program.destroy')->where('id', '[0-9]+');
- });
+    'prefix' => 'programs',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/', [ProgramsController::class, 'index'])
+         ->name('programs.program.index');
+    Route::get('/create', [ProgramsController::class, 'create'])
+         ->name('programs.program.create');
+    Route::get('/show/{program}',[ProgramsController::class, 'show'])
+         ->name('programs.program.show')->where('id', '[0-9]+');
+    Route::get('/{program}/edit',[ProgramsController::class, 'edit'])
+         ->name('programs.program.edit')->where('id', '[0-9]+');
+    Route::post('/', [ProgramsController::class, 'store'])
+         ->name('programs.program.store');
+    Route::put('program/{program}', [ProgramsController::class, 'update'])
+         ->name('programs.program.update')->where('id', '[0-9]+');
+    Route::delete('/program/{program}',[ProgramsController::class, 'destroy'])
+         ->name('programs.program.destroy')->where('id', '[0-9]+');
+});
