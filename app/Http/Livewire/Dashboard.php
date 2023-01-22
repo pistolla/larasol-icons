@@ -6,6 +6,8 @@ use App\Models\Farmer;
 use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Asantibanez\LivewireCharts\Models\RadarChartModel;
 use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -36,6 +38,12 @@ class Dashboard extends Component
         'Nomadic' => "#810541",
         'Organic' => "#fd349c",
         'Aquaculture' => "#b666d2"
+    ];
+
+    public $status = [
+        'Registered' => "#52595d",
+        'Approved' => "#728fce",
+        'Inactive' => "#1589ff"
     ];
 
     public $firstRun = true;
@@ -77,7 +85,7 @@ class Dashboard extends Component
             ->reduce(
                 function ($columnChartModel, $data) {
                     $type = $data->first()->farm_type;
-                    
+
                     $value = $data->count();
 
                     return $columnChartModel->addColumn($type, $value, $this->colors[$type]);
@@ -89,18 +97,39 @@ class Dashboard extends Component
                     ->setLegendVisibility(false)
                     ->setDataLabelsEnabled($this->showDataLabels)
                     ->setOpacity(0.25)
-                    ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
+                    ->setColors($this->colors)
+                    ->setColumnWidth(90)
+                    ->withGrid()
+            );
+        $columnCountyChartModel = $farmers->groupBy('county')
+            ->reduce(
+                function ($columnChartModel, $data) {
+                    $county = $data->first()->county;
+
+                    $value = $data->count();
+
+                    return $columnChartModel->addColumn($county, $value, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+                },
+                LivewireCharts::columnChartModel()
+                    ->setTitle('Total Farmers per county')
+                    ->setAnimated($this->firstRun)
+                    ->withOnColumnClickEventName('onColumnClick')
+                    ->setLegendVisibility(false)
+                    ->setDataLabelsEnabled($this->showDataLabels)
+                    ->setOpacity(0.25)
+                    ->setColors($this->colors)
                     ->setColumnWidth(90)
                     ->withGrid()
             );
 
-        $pieChartModel = $farmers->groupBy('farm_type')
+
+        $pieChartModel = $farmers->groupBy('status')
             ->reduce(
                 function ($pieChartModel, $data) {
-                    $type = $data->first()->farm_type;
+                    $status = $data->first()->status;
                     $value = $data->count();
 
-                    return $pieChartModel->addSlice($type, $value, $this->colors[$type]);
+                    return $pieChartModel->addSlice($status, $value, $this->status[$status]);
                 },
                 LivewireCharts::pieChartModel()
                     //->setTitle('Farmers by Type')
@@ -111,14 +140,15 @@ class Dashboard extends Component
                     ->legendPositionBottom()
                     ->legendHorizontallyAlignedCenter()
                     ->setDataLabelsEnabled($this->showDataLabels)
-                    ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
+                    ->setColors($this->colors)
             );
 
-        $lineChartModel = $farmers->groupBy('farm_type')
+
+        $lineChartModel = $farmers->groupBy('county')
             ->reduce(
                 function ($lineChartModel, $data, $index) use ($farmers) {
 
-                    $type = $data->first()->farm_type;
+                    $type = $data->first()->county;
                     $value = $data->count();
 
                     return $lineChartModel->addPoint($index, $value, ['id' => $index]);
@@ -132,81 +162,31 @@ class Dashboard extends Component
                     ->setDataLabelsEnabled($this->showDataLabels)
                     ->sparklined()
             );
-
-        $areaChartModel = $farmers
+        $today = Carbon::now();
+        $sub18 = $today->subYears(18);
+        $today = Carbon::now();
+        $sub35 = $today->subYears(35);
+        $youths = Farmer::whereDate('dob', '<=', $sub18)->whereDate('dob', '>=', $sub35)->get();
+        $pieChartYouthModel = $youths->groupBy('county')
             ->reduce(
-                function ($areaChartModel, $data) use ($farmers) {
-                    $index = $farmers->search($data);
-                    return $areaChartModel->addPoint($index, $data->age, ['id' => $data->id]);
-                },
-                LivewireCharts::areaChartModel()
-                    //->setTitle('Farmers Peaks')
-                    ->setAnimated($this->firstRun)
-                    ->setColor('#f6ad55')
-                    ->withOnPointClickEvent('onAreaPointClick')
-                    ->setDataLabelsEnabled($this->showDataLabels)
-                    ->setXAxisVisible(true)
-                    ->sparklined()
-            );
+                function ($pieChartModel, $data) {
 
-        $multiLineChartModel = $farmers
-            ->reduce(
-                function ($multiLineChartModel, $data) use ($farmers) {
-                    $index = $farmers->search($data);
+                    $type = $data->first()->county;
 
-                    return $multiLineChartModel
-                        ->addSeriesPoint($data->farm_type, $index, $data->age,  ['id' => $data->id]);
+                    $value = $data->count();
+
+                    return $pieChartModel->addSlice($type, $value, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
                 },
-                LivewireCharts::multiLineChartModel()
+                LivewireCharts::pieChartModel()
                     //->setTitle('Farmers by Type')
                     ->setAnimated($this->firstRun)
-                    ->withOnPointClickEvent('onPointClick')
-                    ->setSmoothCurve()
-                    ->multiLine()
+                    ->setType('donut')
+                    ->withOnSliceClickEvent('onSliceClick')
+                    //->withoutLegend()
+                    ->legendPositionBottom()
+                    ->legendHorizontallyAlignedCenter()
                     ->setDataLabelsEnabled($this->showDataLabels)
-                    ->sparklined()
-                    ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
-            );
-
-        $multiColumnChartModel = $farmers->groupBy('farm_type')
-            ->reduce(
-                function ($multiColumnChartModel, $data) {
-                    $type = $data->first()->farm_type;
-
-                    return $multiColumnChartModel
-                        ->addSeriesColumn($type, 1, $data->sum('age'));
-                },
-                LivewireCharts::multiColumnChartModel()
-                    ->setAnimated($this->firstRun)
-                    ->setDataLabelsEnabled($this->showDataLabels)
-                    ->withOnColumnClickEventName('onColumnClick')
-                    ->setTitle('Revenue per Year (K)')
-                    ->stacked()
-                    ->withGrid()
-            );
-
-        $radarChartModel = $farmers
-            ->reduce(
-                function (RadarChartModel $radarChartModel, $data) use ($farmers) {
-                    return $radarChartModel->addSeries($data->first()->farm_type, $data->description, $data->age);
-                },
-                LivewireCharts::radarChartModel()
-                    ->setAnimated($this->firstRun)
-            );
-
-        $treeChartModel = $farmers->groupBy('farm_type')
-            ->reduce(
-                function (TreeMapChartModel $chartModel, $data) {
-                    $type = $data->first()->farm_type;
-                    $value = $data->sum('age');
-
-                    return $chartModel->addBlock($type, $value)->addColor($this->colors[$type]);
-                },
-                LivewireCharts::treeMapChartModel()
-                    ->setTitle('Farmers Weight')
-                    ->setAnimated($this->firstRun)
-                    ->setDistributed(true)
-                    ->withOnBlockClickEvent('onBlockClick')
+                    ->setColors($this->colors)
             );
 
         $this->firstRun = false;
@@ -214,14 +194,11 @@ class Dashboard extends Component
         return view('livewire.dashboard')
             ->with([
                 'farmers_count' => $farmers->count(),
+                'columnCountyChartModel' => $columnCountyChartModel,
                 'columnChartModel' => $columnChartModel,
                 'pieChartModel' => $pieChartModel,
                 'lineChartModel' => $lineChartModel,
-                'areaChartModel' => $areaChartModel,
-                'multiLineChartModel' => $multiLineChartModel,
-                'multiColumnChartModel' => $multiColumnChartModel,
-                'radarChartModel' => $radarChartModel,
-                'treeChartModel' => $treeChartModel,
+                'pieChartYouthModel' => $pieChartYouthModel
             ]);
     }
 }

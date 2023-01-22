@@ -4,7 +4,7 @@
                         <div class="card-header pb-0">
                             <div class="row">
                                 <div class="col-lg-6 col-7">
-                                    <h6>Farmers per county</h6>
+                                    <h6>Farmers per Status</h6>
                                     <p class="text-sm mb-0">
                                         <i class="fa fa-check text-info" aria-hidden="true"></i>
                                         <span class="font-weight-bold ms-1">{{$farmers_count}} farmers</span> registered
@@ -40,7 +40,7 @@
                         <div class="card-header pb-0">
                             <div class="row">
                                 <div class="col-lg-6 col-7">
-                                    <h6>No of Famers Per Status</h6>
+                                    <h6>No of Famers Per Farm Type</h6>
                                     <p class="text-sm mb-0">
                                         <i class="fa fa-check text-info" aria-hidden="true"></i>
                                         <span class="font-weight-bold ms-1">{{$farmers_count}} farmers</span> registered
@@ -103,9 +103,9 @@
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2" style="height: 32rem;">
-                            <livewire:livewire-pie-chart
-                                key="{{ $pieChartModel->reactiveKey() }}"
-                                :pie-chart-model="$pieChartModel"
+                            <livewire:livewire-column-chart
+                                key="{{ $columnCountyChartModel->reactiveKey() }}"
+                                :column-chart-model="$columnCountyChartModel"
                             />
                         </div>
                     </div>
@@ -140,8 +140,8 @@
                         </div>
                         <div class="card-body px-0 pb-2" style="height: 32rem;">
                             <livewire:livewire-pie-chart
-                                key="{{ $pieChartModel->reactiveKey() }}"
-                                :pie-chart-model="$pieChartModel"
+                                key="{{ $pieChartYouthModel->reactiveKey() }}"
+                                :pie-chart-model="$pieChartYouthModel"
                             />
                         </div>
                     </div>

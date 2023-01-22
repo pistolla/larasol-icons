@@ -27,5 +27,6 @@ class Farmer extends Model
         'farm_type',
         'produce',
         'farm_house',
+        'terms'
     ];
 }

@@ -15,7 +15,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">National ID No.</label>
-                                <input type="text" class="form-control" placeholder="Enter national ID no." wire:model="national_id">
+                                <input type="text" class="form-control" name="national_id" id="national_id" placeholder="Enter national ID no." wire:model="national_id">
                                <span class="text-danger">@error('national_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
@@ -24,14 +24,14 @@
                          <div class="col-md-6">
                              <div class="form-group">
                                  <label for="">First name</label>
-                                 <input type="text" class="form-control" placeholder="Enter first name" wire:model="first_name">
+                                 <input type="text" class="form-control" name="first_name" placeholder="Enter first name" wire:model="first_name">
                                 <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
                              </div>
                          </div>
                          <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Last name</label>
-                                <input type="text" class="form-control" placeholder="Enter last name" wire:model="last_name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter last name" wire:model="last_name">
                                 <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                          <div class="col-md-6">
                              <div class="form-group">
                                  <label for="">Gender</label>
-                                 <select  class="form-control" wire:model="gender">
+                                 <select name="gender" class="form-control" wire:model="gender">
                                         <option value="" selected>Choose gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -51,7 +51,7 @@
                          <div class="col-md-6">
                              <div class="form-group">
                                  <label for="">Date of Birth</label>
-                                 <input type="date" class="form-control" placeholder="Enter date of birth" wire:model="dob">
+                                 <input type="date" class="form-control" name="dob" placeholder="Enter date of birth" wire:model="dob">
                                  <span class="text-danger">@error('dob'){{ $message }}@enderror</span>
                              </div>
                          </div>
@@ -60,14 +60,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Email Address</label>
-                                <input type="text" class="form-control" placeholder="Enter email address" wire:model="email">
+                                <input name="email" type="text" class="form-control" placeholder="Enter email address" wire:model="email">
                                 <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
                                <label for="">Phone</label>
-                               <input type="text" class="form-control" placeholder="Enter phone number" wire:model="phone">
+                               <input name="phone" type="text" class="form-control" placeholder="Enter phone number" wire:model="phone">
                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                            </div>
                        </div>
@@ -90,7 +90,7 @@
                          <div class="col-md-6">
                              <div class="form-group">
                                  <label for="">County of residence</label>
-                                 <select class="form-control" wire:model="county">
+                                 <select class="form-control" id="county" name="county" wire:model="county">
                                      <option value="" selected>Select county</option>
                                      @if(!empty($counties))
                                         @foreach ($counties as $region)
@@ -104,7 +104,7 @@
                          <div class="col-md-6">
                              <div class="form-group">
                                  <label for="">Ward of residence</label>
-                                 <select class="form-control" wire:model="ward">
+                                 <select id="ward" name="ward" class="form-control" wire:model="ward">
                                     <option value="" selected>Select ward</option>
                                     @if(!empty($wards))
                                         @foreach ($wards as $region)
@@ -120,14 +120,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Village</label>
-                                <input type="text" class="form-control" placeholder="Enter Estate/Village/Town/City name" wire:model="village">
+                                <input id="village" name="village" type="text" class="form-control" placeholder="Enter Estate/Village/Town/City name" wire:model="village">
                                 <span class="text-danger">@error('village'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
                                <label for="">Farm Type</label>
-                               <select class="form-control" wire:model="farm_type">
+                               <select class="form-control" name="farm_type" id="farm_type" wire:model="farm_type">
                                 <option value="" selected>Select Farming Type</option>
                                 @if(!empty($farm_types))
                                     @foreach ($farm_types as $type)
@@ -143,7 +143,7 @@
                         <div class="col-md-12">
                            <div class="form-group">
                                <label for="">Farmer Status</label>
-                               <select class="form-control" wire:model="status">
+                               <select class="form-control" name="status" id="status" wire:model="status">
                                 <option value="" selected>Select Farmer Status</option>
                                 <option value="Registered">Registered</option>
                                 <option value="Approved">Approved</option>
@@ -168,11 +168,11 @@
                  <div class="card-header bg-secondary text-white">Register Farmer 3/4 - Farming Produce</div>
                  <div class="card-body">
                      Select the farming produce
-                     <div class="frameworks d-flex flex-column align-items-left mt-2">
+                     <div class="frameworks d-flex flex-row flex-wrap form-group">
                         @if(!empty($produces))
                             @foreach ($produces as $item)
                             <label for="produce_{{$item->produce_id}}">
-                                <input type="checkbox" id="produce_{{$item->produce_id}}" value="produce[]" wire:model="produce">&nbsp; {{$item->produce_name}}
+                                <input type="checkbox" id="produce_{{$item->produce_id}}" name="produce[]" value="{{$item->produce_name}}" wire:model="produce">&nbsp; {{$item->produce_name}}
                             </label>
                             @endforeach
                         @endif 

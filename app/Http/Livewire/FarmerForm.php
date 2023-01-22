@@ -31,6 +31,7 @@ class FarmerForm extends Component
     public $farm_type;
     public $farm_house;
     public $produce;
+    public $terms;
 
     public $counties;
     public $wards;
@@ -104,7 +105,7 @@ class FarmerForm extends Component
             ]);
         } elseif ($this->currentStep == 3) {
             $this->validate([
-                'produce' => 'required|array|min:1|max:20'
+                'produce' => 'required|string'
             ]);
         }
     }
@@ -114,8 +115,7 @@ class FarmerForm extends Component
         $this->resetErrorBag();
         if ($this->currentStep == 4) {
             $this->validate([
-                'farm_house' => 'required|mimes:jpg,jpeg,png,webp|max:4096',
-                'terms' => 'accepted'
+                'farm_house' => 'required|mimes:jpg,jpeg,png,svg|max:4096',
             ]);
         }
 
@@ -124,6 +124,7 @@ class FarmerForm extends Component
 
         if ($upload_photo) {
             $values = array(
+                "national_id" => $this->national_id,
                 "first_name" => $this->first_name,
                 "last_name" => $this->last_name,
                 "gender" => $this->gender,
@@ -133,16 +134,18 @@ class FarmerForm extends Component
                 "status" => $this->status,
                 "county" => $this->county,
                 "ward" => $this->ward,
+                "village" => $this->village,
                 "produce" => json_encode($this->produce),
                 "farm_type" => $this->farm_type,
                 "farm_house" => $farm_photo,
+                "terms" => 'accepted'
             );
 
             Farmer::insert($values);
             //   $this->reset();
             //   $this->currentStep = 1;
             $data = ['name' => $this->first_name . ' ' . $this->last_name, 'email' => $this->email];
-            return redirect()->route('registration.success', $data);
+            return redirect()->route('farmers.index', $data);
         }
     }
 }
