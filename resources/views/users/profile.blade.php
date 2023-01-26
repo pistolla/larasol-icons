@@ -28,7 +28,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                    <div class="col l4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                         <div class="nav-wrapper position-relative end-0">
                             <ul class="nav nav-pills nav-fill p-1" role="tablist">
                                 <li class="nav-item">
@@ -123,7 +123,7 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="mb-3 col-md-12">
+                                <div class="mb-3 col s12">
                                     <label for="floatingTextarea2">About</label>
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about yourself" id="floatingTextarea2" name="about"

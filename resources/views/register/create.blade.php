@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     </div>
 
     @push('js')

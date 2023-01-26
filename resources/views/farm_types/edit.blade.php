@@ -1,6 +1,6 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
     <x-navbars.sidebar activePage='dashboard'></x-navbars.sidebar>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div id="main">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Counties"></x-navbars.navs.auth>
         <!-- End Navbar -->
@@ -54,5 +54,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 </x-layout>

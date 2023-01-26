@@ -26,8 +26,8 @@
         LARASOL
     </title>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
     <link href="{{ asset('assets') }}/css/nucleo-svg.css" rel="stylesheet" />
@@ -36,16 +36,20 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets') }}/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
-
+    <link id="pagestyle" href="{{ asset('assets') }}/css/vendors.min.css" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('assets') }}/css/materialize.min.css" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('assets') }}/css/style.min.css" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('assets') }}/css/custom.css" rel="stylesheet" />
+    @stack('css')
     @livewireStyles
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
-<body class="{{ $bodyClass }}">
+<body class="{{ $bodyClass }}"  data-open="click" data-menu="vertical-modern-menu" data-col="1-column">
 
 {{ $slot }}
 
+<script src="{{ asset('assets') }}/js/jquery.min.js"></script>
 <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
 <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
@@ -64,7 +68,8 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>
-
+<script src="{{ asset('assets') }}/js/plugins.min.js"></script>
+<script src="{{ asset('assets') }}/js/vendors.min.js"></script>
+<script src="{{ asset('assets') }}/js/custom.js"></script>
 </body>
 </html>

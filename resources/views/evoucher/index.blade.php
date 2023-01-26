@@ -1,7 +1,7 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
     <x-navbars.sidebar activePage="billing"></x-navbars.sidebar>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div id="main">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Billing"></x-navbars.navs.auth>
         <!-- End Navbar -->
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-lg-0 mb-4">
+                        <div class="col s12 mb-lg-0 mb-4">
                             <div class="card mt-4">
                                 <div class="card-header pb-0 p-3">
                                     <div class="row">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="card-body p-3">
                                     <div class="row">
-                                        <div class="col-md-6 mb-md-0 mb-4">
+                                        <div class="col-md-6 mb-4">
                                             <div
                                                 class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                                 <img class="w-10 me-3 mb-0"
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col l4">
                     <div class="card h-100">
                         <div class="card-header pb-0 p-3">
                             <div class="row">
@@ -478,7 +478,7 @@
             </div>
             <x-footers.auth></x-footers.auth>
         </div>
-    </main>
+    </div>
     <x-plugins></x-plugins>
 
 </x-layout>

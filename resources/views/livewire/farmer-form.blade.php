@@ -12,7 +12,7 @@
                  <div class="card-header bg-secondary text-white">Register Farmer 1/4 - Personal Details</div>
                  <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col s12">
                             <div class="form-group">
                                 <label for="">National ID No.</label>
                                 <input type="text" class="form-control" name="national_id" id="national_id" placeholder="Enter national ID no." wire:model="national_id">
@@ -140,7 +140,7 @@
                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col s12">
                            <div class="form-group">
                                <label for="">Farmer Status</label>
                                <select class="form-control" name="status" id="status" wire:model="status">

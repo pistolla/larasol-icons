@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\FarmersDataTable;
 use App\Exports\FarmersExport;
 use App\Models\Farmer;
 use Illuminate\Http\Request;
@@ -14,29 +15,31 @@ class FarmerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(FarmersDataTable $dataTable)
     {
-        $farmers = (new Farmer())->newQuery();
+        // $farmers = (new Farmer())->newQuery();
 
-        if (request()->has('search')) {
-            $farmers->where('first_name', 'Like', '%'.request()->input('search').'%');
-        }
+        // if (request()->has('search')) {
+        //     $farmers->where('first_name', 'Like', '%'.request()->input('search').'%');
+        // }
 
-        if (request()->query('sort')) {
-            $attribute = request()->query('sort');
-            $sort_order = 'ASC';
-            if (strncmp($attribute, '-', 1) === 0) {
-                $sort_order = 'DESC';
-                $attribute = substr($attribute, 1);
-            }
-            $farmers->orderBy($attribute, $sort_order);
-        } else {
-            $farmers->latest();
-        }
+        // if (request()->query('sort')) {
+        //     $attribute = request()->query('sort');
+        //     $sort_order = 'ASC';
+        //     if (strncmp($attribute, '-', 1) === 0) {
+        //         $sort_order = 'DESC';
+        //         $attribute = substr($attribute, 1);
+        //     }
+        //     $farmers->orderBy($attribute, $sort_order);
+        // } else {
+        //     $farmers->latest();
+        // }
 
-        $farmers = $farmers->paginate(5)->onEachSide(2);
+        // $farmers = $farmers->paginate(5)->onEachSide(2);
 
-        return view('farmer.index', compact('farmers'));
+        // return view('farmer.index', compact('farmers'));
+
+        return $dataTable->render('farmer.index');
     }
 
     /**
