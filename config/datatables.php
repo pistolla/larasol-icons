@@ -58,8 +58,8 @@ return [
      */
     'builders'       => [
         //Illuminate\Database\Eloquent\Relations\Relation::class => 'eloquent',
-        //Illuminate\Database\Eloquent\Builder::class            => 'eloquent',
-        //Illuminate\Database\Query\Builder::class               => 'query',
+        // Illuminate\Database\Eloquent\Builder::class            => 'eloquent',
+        // Illuminate\Database\Query\Builder::class               => 'query',
         //Illuminate\Support\Collection::class                   => 'collection',
     ],
 

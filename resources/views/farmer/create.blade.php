@@ -3,7 +3,7 @@
         {{ __('Farmers') }}
     </x-slot>
     <div class="row">
-        <div class="col-12">
+        <div class="col s12">
             <livewire:farmer-form />
         </div>
     </div>

@@ -17,18 +17,18 @@ class FarmerForm extends Component
 {
     use WithFileUploads;
 
-    public $national_id;
-    public $first_name;
-    public $last_name;
-    public $gender;
-    public $dob;
-    public $email;
-    public $phone;
-    public $status;
-    public $county;
-    public $ward;
-    public $village;
-    public $farm_type;
+    public $national_id = "9999999";
+    public $first_name = "John";
+    public $last_name = "Smith";
+    public $gender = "male";
+    public $dob = "1971-01-01";
+    public $email = "john.smith@gmail.com";
+    public $phone = "254715555555";
+    public $status = 'registered';
+    public $county = 'Nyeri';
+    public $ward = 'Mathioya';
+    public $village = 'Mununga';
+    public $farm_type = 'Subsistence';
     public $farm_house;
     public $produce;
     public $terms;

@@ -54,7 +54,6 @@
 <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
-@stack('js')
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -70,6 +69,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('assets') }}/js/plugins.min.js"></script>
 <script src="{{ asset('assets') }}/js/vendors.min.js"></script>
-<script src="{{ asset('assets') }}/js/custom.js"></script>
+<script src="{{ asset('assets') }}/js/app.js"></script>
+@stack('js')
 </body>
 </html>

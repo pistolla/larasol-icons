@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <div id="tab_users_pending" class="tab-pane ">
+                                {{-- <div id="tab_users_pending" class="tab-pane ">
                                     <div class="container-fluid">
                                         @can('farmer-approve')
                                         <a id="btn_add_user_i" class="btn btn-primary my-1"><i class="fas fa-plus">&nbsp; Approve Farmers</i></a>
@@ -249,7 +249,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
                                 
                             </div>
                         </div>
@@ -259,30 +259,14 @@
         </div>
     </div>
     <x-footers.auth></x-footers.auth>
-    <x-plugins></x-plugins>
+    {{-- <x-plugins></x-plugins> --}}
 
     @push('css')
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/dataTables.min.css" >
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/Buttons/css/buttons.dataTables.min.css" >
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/Buttons/css/buttons.bootstrap5.min.css" >
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/DataTables/css/dataTables.bootstrap5.min.css" >
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/Scroller/css/scroller.bootstrap5.min.css" >
-        <link type="text/css" rel="stylesheet" href="{{asset('vendor')}}/datatables/Scroller/css/dataTables.scroller.min.css" >
+        <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/app.css" >
     @endpush
 
     @push('js')
-        {{$dataTable->scripts()}}
-        <script src="{{ asset('vendor') }}/datatables/dataTables.min.js" type="text/javascript"></script>
         <script src="{{ asset('vendor') }}/datatables/buttons.server-side.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/Buttons/js/buttons.dataTables.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/Buttons/js/buttons.bootstrap5.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/DataTables/js/dataTables.dataTables.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/DataTables/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/Scroller/js/dataTables.scroller.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/datatables/Scroller/js/scroller.bootstrap5.min.js" type="text/javascript"></script>
-        
-        {{-- <script src="{{ asset('vendor') }}/data-tables/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/data-tables/extensions/responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-        <script src="{{ asset('vendor') }}/data-tables/js/dataTables.select.min.js" type="text/javascript"></script> --}}
+        {{$dataTable->scripts()}}
     @endpush
 </x-layout>
