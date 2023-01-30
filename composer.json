@@ -1,0 +1,55 @@
+{
+    "name": "bitjosef/blade-larasol-icons",
+    "description": "Few Icons often used in Solpartner Projects",
+    "keywords": [
+        "bitjosef",
+        "blade-larasol-icons"
+    ],
+    "homepage": "https://github.com/bitjosef/blade-larasol-icons",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Joseph Kamau",
+            "email": "bitjosef@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0|~8.2.0",
+        "blade-ui-kit/blade-icons": "^1.4",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0|^8.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bitjosef\\BladeLarasolIcons\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bitjosef\\BladeLarasolIcons\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bitjosef\\BladeLarasolIcons\\BladeLarasolIconsServiceProvider"
+            ],
+            "aliases": {
+                "BladeLarasolIcons": "Bitjosef\\BladeLarasolIcons\\BladeLarasolIconsFacade"
+            }
+        }
+    }
+}
