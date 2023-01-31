@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <ul class="tabs">
-                                    <li class="tab col m3"><a href="#tab_users_active" role="tab" data-toggle="tab">Registered Farmers</a></li>
+                                    <li class="tab col m3"><a href="#tab_users_active" class="active" role="tab" data-toggle="tab">Registered Farmers</a></li>
                                     <li class="tab col m3"><a href="#tab_users_pending" role="tab" data-toggle="tab">Approve Farmers</a></li>
                                     <li class="tab col m3"><a href="#tab_users_inactive" role="tab" data-toggle="tab">Farmers</a></li>
                                 </ul>

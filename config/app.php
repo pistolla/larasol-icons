@@ -199,6 +199,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
     ],
 
     /*

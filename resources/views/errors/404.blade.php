@@ -1,25 +1,21 @@
-<x-layout bodyClass="bg-gray-200">
-  <div class="container position-sticky z-index-sticky top-0">
-      <div class="row">
-          <div class="col-12">
-              <!-- Navbar -->
-              <x-navbars.navs.guest signin='login' signup='register'></x-navbars.navs.guest>
-              <!-- End Navbar -->
-          </div>
-      </div>
-  </div>
-  <div class="page-header justify-content-center min-vh-100"
-      style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
-      <span class="mask bg-gradient-dark opacity-6"></span>
-      <div class="container text-center">
-          <div class="row">
-              <div class="col s12">
-                <h1 class="title text-light">404</h1>
-                <h2 class="text-light">Page not found </h2>
-                <h4 class="text-light">Ooooups! Looks like you got lost.</h4>
-              </div>
+<x-layout bodyClass="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column  bg-full-screen-image blank-page blank-page">
+    <!-- Navbar -->
+    <x-navbars.navs.guest signin='login' signup='register'></x-navbars.navs.guest>
+    <!-- End Navbar -->
+    <div class="row">
+      <div class="col s12">
+        <div class="container"><div class="section section-404 p-0 m-0 height-100vh">
+            <div class="row">
+                <!-- 404 -->
+                <div class="col s12 center-align white">
+                    <img src="{{asset('assets')}}/img/error-2.png" class="bg-image-404" alt="">
+                    <h1 class="error-code m-0">404</h1>
+                    <h6 class="mb-2">Page not found</h6>
+                    <a class="btn waves-effect waves-light gradient-45deg-deep-purple-blue gradient-shadow mb-4" href="{{ route('dashboard') }}">Back
+                    TO Home</a>
+                </div>
             </div>
-      </div>
-  </div>
-      <x-footers.guest></x-footers.guest>
+        </div>
+    </div>
+    <x-footers.guest></x-footers.guest>
 </x-layout>

@@ -87,3 +87,7 @@ ul.stepper.horizontal .step .step-content .step-actions
         line-height: 1;
     }
 }
+
+select {
+    display: 'block' !important;
+}

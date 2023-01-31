@@ -15,20 +15,18 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <label for="national_id">National ID No.</label>
-                                <input type="text" class="form-control" name="national_id" id="national_id" wire:model="national_id">
+                                <input type="text"  name="national_id" id="national_id" wire:model="national_id">
                                 <span class="text-danger">@error('national_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m6 s12">
-                                <label for="">First name</label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" wire:model="first_name">
+                                <input type="text"  name="first_name" placeholder="Enter first name" wire:model="first_name">
                                 <span class="text-danger">@error('first_name'){{ $message }}@enderror</span>
 
                             </div>
                             <div class="input-field col m6 s12">
-                                <label for="">Last name</label>
-                                <input type="text" class="form-control" name="last_name" placeholder="Enter last name" wire:model="last_name">
+                                <input type="text"  name="last_name" placeholder="Enter last name" wire:model="last_name">
                                 <span class="text-danger">@error('last_name'){{ $message }}@enderror</span>
 
                             </div>
@@ -46,7 +44,7 @@
                             </div>
                             <div class="input-field col m6 s12">
                                 <label for="">Date of Birth</label>
-                                <input type="date" class="form-control" name="dob" placeholder="Enter date of birth" wire:model="dob">
+                                <input type="date"  name="dob" placeholder="Enter date of birth" wire:model="dob">
                                 <span class="text-danger">@error('dob'){{ $message }}@enderror</span>
 
                             </div>
@@ -54,13 +52,13 @@
                         <div class="row">
                             <div class="input-field col m6 s12">
                                 <label for="">Email Address</label>
-                                <input name="email" type="text" class="form-control" placeholder="Enter email address" wire:model="email">
+                                <input name="email" type="text"  placeholder="Enter email address" wire:model="email">
                                 <span class="text-danger">@error('email'){{ $message }}@enderror</span>
 
                             </div>
                             <div class="input-field col m6 s12">
                                 <label for="">Phone</label>
-                                <input name="phone" type="text" class="form-control" placeholder="Enter phone number" wire:model="phone">
+                                <input name="phone" type="text"  placeholder="Enter phone number" wire:model="phone">
                                 <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
 
                             </div>
@@ -79,7 +77,7 @@
                         <div class="row">
                             <div class="input-field col m6 s12">
                                 <label for="">County of residence</label>
-                                <select class="form-control" id="county" name="county" wire:model="county">
+                                <select  id="county" name="county" wire:model="county">
                                     <option value="" selected>Select county</option>
                                     @if(!empty($counties))
                                     @foreach ($counties as $region)
@@ -92,7 +90,7 @@
                             </div>
                             <div class="input-field col m6 s12">
                                 <label for="">Ward of residence</label>
-                                <select id="ward" name="ward" class="form-control" wire:model="ward">
+                                <select id="ward" name="ward"  wire:model="ward">
                                     <option value="" selected>Select ward</option>
                                     @if(!empty($wards))
                                     @foreach ($wards as $region)
@@ -107,13 +105,13 @@
                         <div class="row">
                             <div class="input-field col m6 s12">
                                 <label for="">Village</label>
-                                <input id="village" name="village" type="text" class="form-control" placeholder="Enter Estate/Village/Town/City name" wire:model="village">
+                                <input id="village" name="village" type="text"  placeholder="Enter Estate/Village/Town/City name" wire:model="village">
                                 <span class="text-danger">@error('village'){{ $message }}@enderror</span>
 
                             </div>
                             <div class="input-field col m6 s12">
                                 <label for="">Farm Type</label>
-                                <select class="form-control" name="farm_type" id="farm_type" wire:model="farm_type">
+                                <select class="icons" name="farm_type" id="farm_type" wire:model="farm_type">
                                     <option value="" selected>Select Farming Type</option>
                                     @if(!empty($farm_types))
                                     @foreach ($farm_types as $type)
@@ -128,7 +126,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <label for="">Farmer Status</label>
-                                <select class="form-control" name="status" id="status" wire:model="status">
+                                <select  name="status" id="status" wire:model="status">
                                     <option value="" selected>Select Farmer Status</option>
                                     <option value="Registered">Registered</option>
                                     <option value="Approved">Approved</option>
@@ -178,7 +176,7 @@
                             Upload image of the farmer on the farm
                             <div class="input-field col s12">
                                 <label for="farm_house">Farmer on Farm Image</label>
-                                <input type="file" class="form-control" wire:model="farm_house">
+                                <input type="file"  wire:model="farm_house">
                                 <span class="text-danger">@error('farm_type'){{ $message }}@enderror</span>
                             </div>
                             <div class="input-field col s12">
@@ -215,3 +213,4 @@
         </form>
     </div>
 </div>
+

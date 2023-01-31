@@ -14,6 +14,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class FarmersDataTable extends DataTable
 {
+    // protected $actions = ['create', 'excel', 'csv', 'pdf'];
     /**
      * Build DataTable class.
      *
@@ -52,10 +53,13 @@ class FarmersDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
+                    ->scrollX(true)
+                    ->scrollY(false)
                     ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
+                        Button::make('create')->addClass('gradient-45deg-green-teal')->addClass('border-round'),
+                        Button::make('excel')->align('button-right')->addClass('gradient-45deg-purple-deep-orange')->addClass('border-round'),
+                        Button::make('csv')->align('button-right')->addClass('gradient-45deg-purple-deep-orange')->addClass('border-round'),
+                        Button::make('pdf')->align('button-right')->addClass('gradient-45deg-purple-deep-orange')->addClass('border-round'),
                         // Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')
@@ -83,21 +87,30 @@ class FarmersDataTable extends DataTable
             Column::make('village'),
             Column::make('status'),
             Column::make('farm_type'),
-            // Column::computed('Show Farm Produce')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
-            // Column::computed('Show Farm House')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
-            // Column::computed('Action')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
+            Column::make('')
+                  ->content('<a href="#" class="btn gradient-45deg-blue-teal">Show Farm Produce</a>')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->searchable(false)
+                  ->orderable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
+            Column::make('')
+                ->content('<a href="#" class="btn gradient-45deg-blue-teal">Show Farm House</a>')
+                ->exportable(false)
+                ->printable(false)
+                ->searchable(false)
+                ->orderable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
+            Column::make('')
+                ->content('<a href="#" class="btn gradient-45deg-blue-teal">Edit</a>')
+                ->exportable(false)
+                ->printable(false)
+                ->searchable(false)
+                ->orderable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
         ];
     }
 
@@ -109,5 +122,9 @@ class FarmersDataTable extends DataTable
     protected function filename(): string
     {
         return 'Farmers_' . date('YmdHis');
+    }
+
+    public function create() {
+
     }
 }

@@ -14,67 +14,67 @@
     
     <hr class="horizontal light mt-0 mb-2">
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow">
-        <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'dashboard' ? '  ' : '' }} "
+        <li class="bold mb-4">
+                <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'dashboard' ? '  ' : '' }} "
                     href="{{ route('dashboard') }}">
-                    
-                        <i class="material-icons opacity-10 cyan-text text-darken-4">dashboard</i>
+                    <img src="{{ asset('vendor/blade-larasol-icons/graphs.svg') }}" width="40" height="40"/>
+                        {{-- <i class="material-icons opacity-10 deep-orange-text text-darken-4">dashboard</i> --}}
                     <span>Dashboard</span>
                 </a>
             </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'farmers' ? ' active ' : 'active' }} "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'farmers' ? ' active ' : 'active' }} "
                 href="{{ route('farmers.index') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">table_view</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/delivery.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 yellow-text text-darken-4">table_view</i> --}}
                 <span>Farmers</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'evoucher' ? ' active ' : '' }}  "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'evoucher' ? ' active ' : '' }}  "
                 href="{{ route('evoucher') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">receipt_long</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/cash.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 red-text text-darken-4">receipt_long</i> --}}
                 <span>Evoucher</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'evoucher' ? ' active ' : '' }} "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'evoucher' ? ' active ' : '' }} "
                 href="{{ route('evoucher') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">people</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/calculator.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 purple-text text-darken-4">people</i> --}}
                 <span>User Management</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'role.index' ? 'active ' : '' }} "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'role.index' ? 'active ' : '' }} "
                 href="{{ route('role.index') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">key</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/safe.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 teal-text text-darken-4">key</i> --}}
                 <span>User Roles</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'permission.index' ? 'active ' : '' }} "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'permission.index' ? 'active ' : '' }} "
                 href="{{ route('permission.index') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">lock</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/website-lock.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 green-text text-darken-4">lock</i> --}}
                 <span>User Permissions</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'generator_tables.generator_table.index' ? ' active ' : '' }}  "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'generator_tables.generator_table.index' ? ' active ' : '' }}  "
                 href="{{ route('generator_tables.generator_table.index') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">settings</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/stopwatch.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 blue-text text-darken-4">settings</i> --}}
                 <span>Setup</span>
             </a>
         </li>
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan {{ $activePage == 'profile' ? ' active ' : '' }}  "
+        <li class="bold mb-4">
+            <a class="collapsible-header waves-effect waves-cyan display-flex {{ $activePage == 'profile' ? ' active ' : '' }}  "
                 href="{{ route('profile') }}">
-                
-                    <i class="material-icons opacity-10 cyan-text text-darken-4">person</i>
+                <img src="{{ asset('vendor/blade-larasol-icons/light-bulb.svg') }}" width="40" height="40"/>
+                    {{-- <i class="material-icons opacity-10 blue-grey-text text-darken-4">person</i> --}}
                 <span>Profile</span>
             </a>
         </li>
