@@ -5,6 +5,200 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/counties": {
+            "get": {
+                "description": "Get all Counties",
+                "operationId": "getCountiesList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Counties"
+                ],
+                "summary": "Store new County",
+                "description": "Returns county data",
+                "operationId": "storeCounties",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CountiesFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Counties"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/counties/{id}": {
+            "get": {
+                "tags": [
+                    "Counties"
+                ],
+                "summary": "Get county information",
+                "description": "Returns county data",
+                "operationId": "getCountyById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "County id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Counties"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Counties"
+                ],
+                "summary": "Update existing county",
+                "description": "Returns updated county data",
+                "operationId": "updateCounties",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "County id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CountiesFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Counties"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Counties"
+                ],
+                "summary": "Delete existing county",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteCounty",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "County id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/user": {
             "post": {
                 "tags": [
@@ -258,6 +452,27 @@
     },
     "components": {
         "schemas": {
+            "CountiesFormRequest": {
+                "title": "County Form request",
+                "required": [
+                    "county_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "county_name": {
+                        "description": "County Name",
+                        "type": "string",
+                        "example": "Nairobi"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CountiesFormRequest"
+                }
+            },
             "BaseModel": {
                 "properties": {
                     "created_at": {
@@ -552,15 +767,18 @@
                     },
                     "maximum_farmers": {
                         "description": "Maximum Farmers",
-                        "type": "string"
+                        "type": "integer"
                     },
                     "disbursed_amount": {
                         "description": "Disbursed Amount",
-                        "type": "string"
+                        "type": "number",
+                        "format": "float"
                     },
                     "deposited_amount": {
                         "description": "Deposited Amount",
-                        "type": "string"
+                        "type": "number",
+                        "format": "float",
+                        "readOnly": "true"
                     },
                     "status": {
                         "description": "Status",

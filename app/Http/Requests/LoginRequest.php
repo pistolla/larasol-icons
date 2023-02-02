@@ -8,7 +8,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-
+use OpenApi\Annotations as OA;
+/**
+ *
+ * @OA\Schema(
+ *      title="County Form request",
+ *      type="object",
+ *      required={"county_name"},
+ *      @OA\Xml(name="LoginRequest"),
+ *      @OA\Property(property="email", type="string", description="User email", example="admin@materialize.com")
+ *      @OA\Property(property="password", type="string", description="User Password", example="pass1234")
+ * )
+ *
+ * Class LoginRequest
+ *
+ */
 class LoginRequest extends FormRequest
 {
     /**

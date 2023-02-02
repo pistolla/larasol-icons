@@ -3,7 +3,22 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use OpenApi\Annotations as OA;
+/**
+ *
+ * @OA\Schema(
+ *      title="Update Permission Form request",
+ *      type="object",
+ *      required={"id","name", "guard_name"},
+ *      @OA\Xml(name="UpdatePermissionRequest"),
+ *      @OA\Property(property="id", type="integer", example="1"),
+ *      @OA\Property(property="name", type="string",  description="Name"),
+ *      @OA\Property(property="guard_name", type="string", readOnly="true", description="Guard name"),
+ * )
+ *
+ * Class UpdatePermissionRequest
+ *
+ */
 class UpdatePermissionRequest extends FormRequest
 {
     /**

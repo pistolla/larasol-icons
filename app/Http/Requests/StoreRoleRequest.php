@@ -3,7 +3,21 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use OpenApi\Annotations as OA;
+/**
+ *
+ * @OA\Schema(
+ *      title="Store Role Form request",
+ *      type="object",
+ *      required={"county_name"},
+ *      @OA\Xml(name="StoreRoleRequest"),
+ *      @OA\Property(property="id", type="integer", example="1"),
+ *      @OA\Property(property="county_name", type="string", description="County Name", example="Nairobi")
+ * )
+ *
+ * Class StoreRoleRequest
+ *
+ */
 class StoreRoleRequest extends FormRequest
 {
     /**
