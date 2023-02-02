@@ -4,7 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use OpenApi\Annotations as OA;
+/**
+ *
+ * @OA\Schema(
+ * required={"farm_type_name"},
+ * @OA\Xml(name="FarmTypes"),
+ * @OA\Property(property="id", type="integer", readOnly="true", example="1"),
+ * @OA\Property(property="farm_type_name", type="string", readOnly="true", description="Farm Type Name"),
+ * @OA\Property(property="created_at", ref="#/components/schemas/BaseModel/properties/created_at"),
+ * @OA\Property(property="updated_at", ref="#/components/schemas/BaseModel/properties/updated_at"),
+ * @OA\Property(property="deleted_at", ref="#/components/schemas/BaseModel/properties/deleted_at")
+ * )
+ *
+ * Class FarmTypes
+ *
+ */
 class FarmTypes extends Model
 {
     

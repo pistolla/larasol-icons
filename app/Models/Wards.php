@@ -4,7 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use OpenApi\Annotations as OA;
+/**
+ *
+ * @OA\Schema(
+ * required={"ward_name","county_id"},
+ * @OA\Xml(name="Wards"),
+ * @OA\Property(property="id", type="integer", readOnly="true", example="1"),
+ * @OA\Property(property="ward_name", type="string", readOnly="true", description="Ward name"),
+ * @OA\Property(property="county_id", type="integer", readOnly="true", description="County id"),
+ * @OA\Property(property="created_at", ref="#/components/schemas/BaseModel/properties/created_at"),
+ * @OA\Property(property="updated_at", ref="#/components/schemas/BaseModel/properties/updated_at"),
+ * @OA\Property(property="deleted_at", ref="#/components/schemas/BaseModel/properties/deleted_at")
+ * )
+ *
+ * Class Wards
+ *
+ */
 class Wards extends Model
 {
     
