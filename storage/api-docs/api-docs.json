@@ -7,6 +7,9 @@
     "paths": {
         "/api/counties": {
             "get": {
+                "tags": [
+                    "Counties"
+                ],
                 "description": "Get all Counties",
                 "operationId": "getCountiesList",
                 "responses": {
@@ -38,7 +41,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CountiesFormRequest"
+                                "$ref": "#/components/schemas/StoreCountiesRequest"
                             }
                         }
                     }
@@ -130,7 +133,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CountiesFormRequest"
+                                "$ref": "#/components/schemas/UpdateCountiesRequest"
                             }
                         }
                     }
@@ -199,10 +202,1217 @@
                 }
             }
         },
+        "/api/dashboard": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "description": "Get all Dashboard",
+                "operationId": "getDashboard",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/farmtypes": {
+            "get": {
+                "tags": [
+                    "FarmTypes"
+                ],
+                "description": "Get all Farm Types",
+                "operationId": "getFarmTypesList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "FarmTypes"
+                ],
+                "summary": "Store new FarmType",
+                "description": "Returns farm type data",
+                "operationId": "storeFarmTypes",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreFarmTypesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FarmTypes"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/farmtypes/{id}": {
+            "get": {
+                "tags": [
+                    "FarmTypes"
+                ],
+                "summary": "Get farm type information",
+                "description": "Returns farm type data",
+                "operationId": "getFarmTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Farm Type id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FarmTypes"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "FarmTypes"
+                ],
+                "summary": "Update existing farm type",
+                "description": "Returns updated farm type data",
+                "operationId": "updateFarmTypes",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Farm Type id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateFarmTypesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FarmTypes"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "FarmTypes"
+                ],
+                "summary": "Delete existing farm type",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteFarmType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Farm Type id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/farmers": {
+            "get": {
+                "tags": [
+                    "Farmers"
+                ],
+                "description": "Get all Farmers",
+                "operationId": "getFarmersList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Farmers"
+                ],
+                "summary": "Store new Farmer",
+                "description": "Returns farmer data",
+                "operationId": "storeFarmers",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreFarmerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farmer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/farmers/{id}": {
+            "get": {
+                "tags": [
+                    "Farmers"
+                ],
+                "summary": "Get farmer information",
+                "description": "Returns farmer data",
+                "operationId": "getFarmerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Farmer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farmer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Farmers"
+                ],
+                "summary": "Update existing farmer",
+                "description": "Returns updated farmer data",
+                "operationId": "updateFarmers",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "County id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateFarmerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Farmer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Farmers"
+                ],
+                "summary": "Delete existing farmer",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteFarmer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Farmer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/permissions": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "description": "Get all Permissions",
+                "operationId": "getPermissionsList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Store new Permission",
+                "description": "Returns permission data",
+                "operationId": "storePermisions",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StorePermissionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Permission"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/permissions/{id}": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Get permission information",
+                "description": "Returns permission data",
+                "operationId": "getPermissionById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Permission id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Permission"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Update existing permission",
+                "description": "Returns updated permission data",
+                "operationId": "updatePermissions",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Permission id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePermissionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Permission"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Delete existing permission",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deletePermission",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Permission id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/produces": {
+            "get": {
+                "tags": [
+                    "Produces"
+                ],
+                "description": "Get all Produces",
+                "operationId": "getProducesList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Produces"
+                ],
+                "summary": "Store new Produce",
+                "description": "Returns produce data",
+                "operationId": "storeProduces",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreProduceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Produces"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/produces/{id}": {
+            "get": {
+                "tags": [
+                    "Produces"
+                ],
+                "summary": "Get produce information",
+                "description": "Returns produce data",
+                "operationId": "getProduceById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produce id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Produces"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Produces"
+                ],
+                "summary": "Update existing produce",
+                "description": "Returns updated produce data",
+                "operationId": "updateProduces",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produce id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateProduceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Produces"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Produces"
+                ],
+                "summary": "Delete existing produce",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProduce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Produce id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/programs": {
+            "get": {
+                "tags": [
+                    "Programs"
+                ],
+                "description": "Get all Programs",
+                "operationId": "getProgramsList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": "Store new Program",
+                "description": "Returns program data",
+                "operationId": "storePrograms",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreProgramsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Program"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/programs/{id}": {
+            "get": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": "Get program information",
+                "description": "Returns program data",
+                "operationId": "getProgramById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Program id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Program"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": "Update existing program",
+                "description": "Returns updated program data",
+                "operationId": "updatePrograms",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Program id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateProgramRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Program"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Programs"
+                ],
+                "summary": "Delete existing program",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProgram",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Program id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/roles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "description": "Get all Roles",
+                "operationId": "getRolesList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Store new Role",
+                "description": "Returns role data",
+                "operationId": "storeRoles",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/roles/{id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get role information",
+                "description": "Returns role data",
+                "operationId": "getRoleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update existing role",
+                "description": "Returns updated role data",
+                "operationId": "updateRoles",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete existing role",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/user": {
             "post": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Create user",
                 "description": "This can only be done by the logged in user.",
@@ -228,7 +1438,7 @@
         "/user/createWithArray": {
             "post": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Creates list of users with given input array",
                 "description": "",
@@ -257,7 +1467,7 @@
         "/user/createWithList": {
             "post": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Creates list of users with given input array",
                 "description": "",
@@ -286,7 +1496,7 @@
         "/user/login": {
             "get": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Logs user into the system",
                 "description": "",
@@ -339,7 +1549,7 @@
         "/user/logout": {
             "get": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Logs out current logged in user session",
                 "description": "",
@@ -355,7 +1565,7 @@
         "/user/{username}": {
             "get": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Get user by user name",
                 "description": "",
@@ -385,7 +1595,7 @@
             },
             "put": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Updated user",
                 "description": "This can only be done by the logged in user.",
@@ -423,7 +1633,7 @@
             },
             "delete": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Delete user",
                 "description": "This can only be done by the logged in user.",
@@ -448,11 +1658,595 @@
                     }
                 }
             }
+        },
+        "/api/wards": {
+            "get": {
+                "tags": [
+                    "Wards"
+                ],
+                "description": "Get all Wards",
+                "operationId": "getWardsList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Wards"
+                ],
+                "summary": "Store new Ward",
+                "description": "Returns ward data",
+                "operationId": "storeWards",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreWardRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wards"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/wards/{id}": {
+            "get": {
+                "tags": [
+                    "Wards"
+                ],
+                "summary": "Get ward information",
+                "description": "Returns ward data",
+                "operationId": "getWardById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ward id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wards"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Wards"
+                ],
+                "summary": "Update existing ward",
+                "description": "Returns updated ward data",
+                "operationId": "updateWards",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ward id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateWardRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wards"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Wards"
+                ],
+                "summary": "Delete existing ward",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteWard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ward id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
-            "CountiesFormRequest": {
+            "LoginRequest": {
+                "title": "County Form request",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "description": "User email",
+                        "type": "string",
+                        "example": "admin@materialize.com"
+                    },
+                    "password": {
+                        "description": "User Password",
+                        "type": "string",
+                        "example": "pass1234"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "LoginRequest"
+                }
+            },
+            "StoreCountiesRequest": {
+                "title": "County Form Store request",
+                "required": [
+                    "county_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "county_name": {
+                        "description": "County Name",
+                        "type": "string",
+                        "example": "Nairobi"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreCountiesRequest"
+                }
+            },
+            "StoreFarmTypesRequest": {
+                "title": "Farm Types Form Store request",
+                "required": [
+                    "farm_type_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "farm_type_name": {
+                        "description": "Farm Type Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreFarmTypesRequest"
+                }
+            },
+            "StoreFarmerRequest": {
+                "title": "Store Farmer Form request",
+                "required": [
+                    "county_name"
+                ],
+                "properties": {
+                    "national_id": {
+                        "description": "National Id no.",
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Doe"
+                    },
+                    "gender": {
+                        "description": "Gender male or female",
+                        "type": "string",
+                        "readOnly": "true",
+                        "example": "male"
+                    },
+                    "dob": {
+                        "description": "Date of Birth",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-02-25"
+                    },
+                    "email": {
+                        "description": "Farmer unique email address",
+                        "type": "string",
+                        "format": "email",
+                        "example": "farmer@gmail.com"
+                    },
+                    "phone": {
+                        "description": "Farmer phone number",
+                        "type": "string",
+                        "example": "254716365943"
+                    },
+                    "status": {
+                        "description": "Registration status",
+                        "type": "string",
+                        "example": "Registered"
+                    },
+                    "county": {
+                        "description": "Farm County Name",
+                        "type": "string",
+                        "example": "Nyeri"
+                    },
+                    "ward": {
+                        "description": "Farm ward name",
+                        "type": "string",
+                        "example": "MATHIOYA"
+                    },
+                    "village": {
+                        "description": "Farm village name",
+                        "type": "string",
+                        "example": "Kariguini"
+                    },
+                    "farm_type": {
+                        "description": "Type of Farming",
+                        "type": "string",
+                        "example": "Subsistence"
+                    },
+                    "produce": {
+                        "description": "List of farm produce",
+                        "type": "string",
+                        "example": "['Mangoes','Cashew Nut']"
+                    },
+                    "farm_house": {
+                        "description": "Image of farm house",
+                        "type": "string",
+                        "example": "img_20230103_220125.jpg"
+                    },
+                    "terms": {
+                        "description": "Terms and Condition",
+                        "type": "string",
+                        "example": "Accepted"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreFarmerRequest"
+                }
+            },
+            "StorePermissionRequest": {
+                "title": "Store Permission Form request",
+                "required": [
+                    "id",
+                    "county_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "county_name": {
+                        "description": "County Name",
+                        "type": "string",
+                        "example": "Nairobi"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StorePermissionRequest"
+                }
+            },
+            "StoreProduceRequest": {
+                "title": "Store Produce Form request",
+                "required": [
+                    "id",
+                    "produce_name"
+                ],
+                "properties": {
+                    "produce_name": {
+                        "description": "County Name",
+                        "type": "string",
+                        "example": "Veal"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreProduceRequest"
+                }
+            },
+            "StoreProgramsRequest": {
+                "title": "Store Program Form request",
+                "required": [
+                    "program_name",
+                    "season",
+                    "season_start",
+                    "season_end",
+                    "farm_type_criteria",
+                    "farm_produce_criteria",
+                    "county_boundary_criteria",
+                    "ward_boundary_criteria",
+                    "maximum_farmers",
+                    "disbursed_amount",
+                    "deposited_amount",
+                    "status",
+                    "organization",
+                    "bank_account"
+                ],
+                "properties": {
+                    "program_name": {
+                        "description": "Program Name",
+                        "type": "string"
+                    },
+                    "season": {
+                        "description": "Season",
+                        "type": "string"
+                    },
+                    "season_start": {
+                        "description": "Season Start",
+                        "type": "string"
+                    },
+                    "season_end": {
+                        "description": "Season End",
+                        "type": "string"
+                    },
+                    "farm_type_criteria": {
+                        "description": "Farm Type Criteria",
+                        "type": "string"
+                    },
+                    "farm_produce_criteria": {
+                        "description": "Farm Produce Criteria",
+                        "type": "string"
+                    },
+                    "county_boundary_criteria": {
+                        "description": "County Criteria",
+                        "type": "string"
+                    },
+                    "ward_boundary_criteria": {
+                        "description": "Ward Criteria",
+                        "type": "string"
+                    },
+                    "maximum_farmers": {
+                        "description": "Maximum Farmers",
+                        "type": "integer"
+                    },
+                    "disbursed_amount": {
+                        "description": "Disbursed Amount",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "deposited_amount": {
+                        "description": "Deposited Amount",
+                        "type": "number",
+                        "format": "float",
+                        "readOnly": "true"
+                    },
+                    "status": {
+                        "description": "Status",
+                        "type": "string"
+                    },
+                    "organization": {
+                        "description": "Organization",
+                        "type": "string"
+                    },
+                    "organization_logo": {
+                        "description": "Organization Logo",
+                        "type": "string"
+                    },
+                    "bank_account": {
+                        "description": "Bank account",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreProgramsRequest"
+                }
+            },
+            "StoreRoleRequest": {
+                "title": "Store Role Form request",
+                "required": [
+                    "county_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "county_name": {
+                        "description": "County Name",
+                        "type": "string",
+                        "example": "Nairobi"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreRoleRequest"
+                }
+            },
+            "StoreUserRequest": {
+                "title": "Store User Form request",
+                "required": [
+                    "role",
+                    "email",
+                    "email_verified_at",
+                    "first_name",
+                    "last_name",
+                    "location",
+                    "about",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "role": {
+                        "description": "User role",
+                        "type": "integer"
+                    },
+                    "email": {
+                        "description": "User unique email address",
+                        "type": "string",
+                        "format": "email",
+                        "example": "user@gmail.com"
+                    },
+                    "email_verified_at": {
+                        "description": "Datetime marker of verification status",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-02-25 12:59:20"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Doe"
+                    },
+                    "location": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Location"
+                    },
+                    "about": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Describe"
+                    },
+                    "password_confirmation": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Confirmation"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreUserRequest"
+                }
+            },
+            "StoreWardRequest": {
+                "title": "Ward Form store request",
+                "required": [
+                    "ward_name"
+                ],
+                "properties": {
+                    "ward_id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "ward_name": {
+                        "description": "Ward Name",
+                        "type": "string",
+                        "example": "Starehe"
+                    },
+                    "county_id": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreWardRequest"
+                }
+            },
+            "UpdateCountiesRequest": {
                 "title": "County Form request",
                 "required": [
                     "county_name"
@@ -470,7 +2264,406 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "CountiesFormRequest"
+                    "name": "UpdateCountiesRequest"
+                }
+            },
+            "UpdateFarmTypesRequest": {
+                "title": "Farm Types Update request",
+                "required": [
+                    "farm_type_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "farm_type_name": {
+                        "description": "Farm Type Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateFarmTypesRequest"
+                }
+            },
+            "UpdateFarmerRequest": {
+                "title": "Store Farmer Form request",
+                "required": [
+                    "county_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "national_id": {
+                        "description": "National Id no.",
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Doe"
+                    },
+                    "gender": {
+                        "description": "Gender male or female",
+                        "type": "string",
+                        "readOnly": "true",
+                        "example": "male"
+                    },
+                    "dob": {
+                        "description": "Date of Birth",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-02-25"
+                    },
+                    "email": {
+                        "description": "Farmer unique email address",
+                        "type": "string",
+                        "format": "email",
+                        "example": "farmer@gmail.com"
+                    },
+                    "phone": {
+                        "description": "Farmer phone number",
+                        "type": "string",
+                        "example": "254716365943"
+                    },
+                    "status": {
+                        "description": "Registration status",
+                        "type": "string",
+                        "example": "Registered"
+                    },
+                    "county": {
+                        "description": "Farm County Name",
+                        "type": "string",
+                        "example": "Nyeri"
+                    },
+                    "ward": {
+                        "description": "Farm ward name",
+                        "type": "string",
+                        "example": "MATHIOYA"
+                    },
+                    "village": {
+                        "description": "Farm village name",
+                        "type": "string",
+                        "example": "Kariguini"
+                    },
+                    "farm_type": {
+                        "description": "Type of Farming",
+                        "type": "string",
+                        "example": "Subsistence"
+                    },
+                    "produce": {
+                        "description": "List of farm produce",
+                        "type": "string",
+                        "example": "['Mangoes','Cashew Nut']"
+                    },
+                    "farm_house": {
+                        "description": "Image of farm house",
+                        "type": "string",
+                        "example": "img_20230103_220125.jpg"
+                    },
+                    "terms": {
+                        "description": "Terms and Condition",
+                        "type": "string",
+                        "example": "Accepted"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateFarmerRequest"
+                }
+            },
+            "UpdatePermissionRequest": {
+                "title": "Update Permission Form request",
+                "required": [
+                    "id",
+                    "name",
+                    "guard_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    },
+                    "guard_name": {
+                        "description": "Guard name",
+                        "type": "string",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdatePermissionRequest"
+                }
+            },
+            "UpdateProduceRequest": {
+                "title": "Update Produce Form request",
+                "required": [
+                    "id",
+                    "produce_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "produce_name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateProduceRequest"
+                }
+            },
+            "UpdateProfileRequest": {
+                "title": "Profile Update Form request",
+                "required": [
+                    "id",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "email": {
+                        "description": "User email",
+                        "type": "string",
+                        "example": "admin@materialize.com"
+                    },
+                    "password": {
+                        "description": "User Password",
+                        "type": "string",
+                        "example": "pass1234"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateProfileRequest"
+                }
+            },
+            "UpdateProgramRequest": {
+                "title": "Update Program Form request",
+                "required": [
+                    "program_name",
+                    "season",
+                    "season_start",
+                    "season_end",
+                    "farm_type_criteria",
+                    "farm_produce_criteria",
+                    "county_boundary_criteria",
+                    "ward_boundary_criteria",
+                    "maximum_farmers",
+                    "disbursed_amount",
+                    "deposited_amount",
+                    "status",
+                    "organization",
+                    "bank_account"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "program_name": {
+                        "description": "Program Name",
+                        "type": "string"
+                    },
+                    "season": {
+                        "description": "Season",
+                        "type": "string"
+                    },
+                    "season_start": {
+                        "description": "Season Start",
+                        "type": "string"
+                    },
+                    "season_end": {
+                        "description": "Season End",
+                        "type": "string"
+                    },
+                    "farm_type_criteria": {
+                        "description": "Farm Type Criteria",
+                        "type": "string"
+                    },
+                    "farm_produce_criteria": {
+                        "description": "Farm Produce Criteria",
+                        "type": "string"
+                    },
+                    "county_boundary_criteria": {
+                        "description": "County Criteria",
+                        "type": "string"
+                    },
+                    "ward_boundary_criteria": {
+                        "description": "Ward Criteria",
+                        "type": "string"
+                    },
+                    "maximum_farmers": {
+                        "description": "Maximum Farmers",
+                        "type": "integer"
+                    },
+                    "disbursed_amount": {
+                        "description": "Disbursed Amount",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "deposited_amount": {
+                        "description": "Deposited Amount",
+                        "type": "number",
+                        "format": "float",
+                        "readOnly": "true"
+                    },
+                    "status": {
+                        "description": "Status",
+                        "type": "string"
+                    },
+                    "organization": {
+                        "description": "Organization",
+                        "type": "string"
+                    },
+                    "organization_logo": {
+                        "description": "Organization Logo",
+                        "type": "string"
+                    },
+                    "bank_account": {
+                        "description": "Bank account",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateProgramRequest"
+                }
+            },
+            "UpdateRoleRequest": {
+                "title": "Update Role Form request",
+                "required": [
+                    "id",
+                    "name",
+                    "guard_name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "User name",
+                        "type": "string"
+                    },
+                    "guard_name": {
+                        "description": "User guard name",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateRoleRequest"
+                }
+            },
+            "UpdateUserRequest": {
+                "title": "County Form request",
+                "required": [
+                    "id",
+                    "role",
+                    "email",
+                    "email_verified_at",
+                    "first_name",
+                    "last_name",
+                    "location",
+                    "about",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "role": {
+                        "description": "User role",
+                        "type": "integer"
+                    },
+                    "email": {
+                        "description": "User unique email address",
+                        "type": "string",
+                        "format": "email",
+                        "example": "user@gmail.com"
+                    },
+                    "email_verified_at": {
+                        "description": "Datetime marker of verification status",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-02-25 12:59:20"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Doe"
+                    },
+                    "location": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Location"
+                    },
+                    "about": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Describe"
+                    },
+                    "password_confirmation": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Confirmation"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateUserRequest"
+                }
+            },
+            "UpdateWardRequest": {
+                "title": "Ward Form request",
+                "required": [
+                    "ward_name"
+                ],
+                "properties": {
+                    "ward_id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "ward_name": {
+                        "description": "Ward Name",
+                        "type": "string",
+                        "example": "Starehe"
+                    },
+                    "county_id": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateWardRequest"
                 }
             },
             "BaseModel": {

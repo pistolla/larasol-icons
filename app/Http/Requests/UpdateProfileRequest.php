@@ -14,7 +14,7 @@ use OpenApi\Annotations as OA;
  *      required={"id","email","password"},
  *      @OA\Xml(name="UpdateProfileRequest"),
  *      @OA\Property(property="id", type="integer", example="1"),
- *      @OA\Property(property="email", type="string", description="User email", example="admin@materialize.com")
+ *      @OA\Property(property="email", type="string", description="User email", example="admin@materialize.com"),
  *      @OA\Property(property="password", type="string", description="User Password", example="pass1234")
  * )
  *

@@ -10,7 +10,7 @@ class UserApiController extends Controller
 { 
     /**
      * @OA\Post(path="/user",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Create user",
      *     description="This can only be done by the logged in user.",
      *     operationId="createUser",
@@ -31,7 +31,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Post(path="/user/createWithArray",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Creates list of users with given input array",
      *     description="",
      *     operationId="createUsersWithArrayInput",
@@ -55,7 +55,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Post(path="/user/createWithList",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Creates list of users with given input array",
      *     description="",
      *     operationId="createUsersWithListInput",
@@ -79,7 +79,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Get(path="/user/login",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Logs user into the system",
      *     description="",
      *     operationId="loginUser",
@@ -130,7 +130,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Get(path="/user/logout",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Logs out current logged in user session",
      *     description="",
      *     operationId="logoutUser",
@@ -144,7 +144,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Get(path="/user/{username}",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Get user by user name",
      *     description="",
      *     operationId="getUserByName",
@@ -168,7 +168,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Put(path="/user/{username}",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Updated user",
      *     description="This can only be done by the logged in user.",
      *     operationId="updateUser",
@@ -199,7 +199,7 @@ class UserApiController extends Controller
 
     /**
      * @OA\Delete(path="/user/{username}",
-     *     tags={"user"},
+     *     tags={"User"},
      *     summary="Delete user",
      *     description="This can only be done by the logged in user.",
      *     operationId="deleteUser",

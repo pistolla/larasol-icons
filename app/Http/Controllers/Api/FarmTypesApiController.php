@@ -12,6 +12,7 @@ class FarmTypesApiController extends Controller
      * @OA\Get(path="/api/farmtypes", 
      *   description="Get all Farm Types",       
      *   operationId="getFarmTypesList",
+     *   tags={"FarmTypes"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()
@@ -118,7 +119,7 @@ class FarmTypesApiController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/StoreFarmTypeRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/UpdateFarmTypesRequest")
      *      ),
      *      @OA\Response(
      *          response=202,

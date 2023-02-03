@@ -12,6 +12,7 @@ class ProgramApiController extends Controller
      * @OA\Get(path="/api/programs", 
      *   description="Get all Programs",       
      *   operationId="getProgramsList",
+     *   tags={"Programs"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()
@@ -62,14 +63,14 @@ class ProgramApiController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/counties/{id}",
-     *      operationId="getCountyById",
-     *      tags={"Counties"},
-     *      summary="Get county information",
-     *      description="Returns county data",
+     *      path="/api/programs/{id}",
+     *      operationId="getProgramById",
+     *      tags={"Programs"},
+     *      summary="Get program information",
+     *      description="Returns program data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="County id",
+     *          description="Program id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -79,7 +80,7 @@ class ProgramApiController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Counties")
+     *          @OA\JsonContent(ref="#/components/schemas/Program")
      *       ),
      *      @OA\Response(
      *          response=400,

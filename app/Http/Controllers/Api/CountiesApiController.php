@@ -12,6 +12,7 @@ class CountiesApiController extends Controller
      * @OA\Get(path="/api/counties", 
      *   description="Get all Counties",       
      *   operationId="getCountiesList",
+     *   tags={"Counties"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()
@@ -34,7 +35,7 @@ class CountiesApiController extends Controller
      *      description="Returns county data",
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/CountiesFormRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/StoreCountiesRequest")
      *      ),
      *      @OA\Response(
      *          response=201,
@@ -118,7 +119,7 @@ class CountiesApiController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/CountiesFormRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/UpdateCountiesRequest")
      *      ),
      *      @OA\Response(
      *          response=202,

@@ -10,16 +10,16 @@ use OpenApi\Annotations as OA;
  *      title="Ward Form request",
  *      type="object",
  *      required={"ward_name"},
- *      @OA\Xml(name="UpdateWardFormRequest"),
+ *      @OA\Xml(name="UpdateWardRequest"),
  *      @OA\Property(property="ward_id", type="integer", example="1"),
  *      @OA\Property(property="ward_name", type="string", description="Ward Name", example="Starehe"),
  *      @OA\Property(property="county_id", type="integer", example="1"),
  * )
  *
- * Class UpdateWardFormRequest
+ * Class UpdateWardRequest
  *
  */
-class UpdateWardFormRequest extends FormRequest
+class UpdateWardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

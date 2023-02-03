@@ -12,6 +12,7 @@ class WardsApiController extends Controller
      * @OA\Get(path="/api/wards", 
      *   description="Get all Wards",       
      *   operationId="getWardsList",
+     *   tags={"Wards"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()
@@ -34,7 +35,7 @@ class WardsApiController extends Controller
      *      description="Returns ward data",
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/WardsFormRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/StoreWardRequest")
      *      ),
      *      @OA\Response(
      *          response=201,
@@ -62,14 +63,14 @@ class WardsApiController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/counties/{id}",
-     *      operationId="getCountyById",
-     *      tags={"Counties"},
-     *      summary="Get county information",
-     *      description="Returns county data",
+     *      path="/api/wards/{id}",
+     *      operationId="getWardById",
+     *      tags={"Wards"},
+     *      summary="Get ward information",
+     *      description="Returns ward data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="County id",
+     *          description="Ward id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -79,7 +80,7 @@ class WardsApiController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Counties")
+     *          @OA\JsonContent(ref="#/components/schemas/Wards")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -102,14 +103,14 @@ class WardsApiController extends Controller
 
     /**
      * @OA\Put(
-     *      path="/api/counties/{id}",
-     *      operationId="updateCounties",
-     *      tags={"Counties"},
-     *      summary="Update existing county",
-     *      description="Returns updated county data",
+     *      path="/api/wards/{id}",
+     *      operationId="updateWards",
+     *      tags={"Wards"},
+     *      summary="Update existing ward",
+     *      description="Returns updated ward data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="County id",
+     *          description="Ward id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -118,12 +119,12 @@ class WardsApiController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/CountiesFormRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/UpdateWardRequest")
      *      ),
      *      @OA\Response(
      *          response=202,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Counties")
+     *          @OA\JsonContent(ref="#/components/schemas/Wards")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -150,14 +151,14 @@ class WardsApiController extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/counties/{id}",
-     *      operationId="deleteCounty",
-     *      tags={"Counties"},
-     *      summary="Delete existing county",
+     *      path="/api/wards/{id}",
+     *      operationId="deleteWard",
+     *      tags={"Wards"},
+     *      summary="Delete existing ward",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(
      *          name="id",
-     *          description="County id",
+     *          description="Ward id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(

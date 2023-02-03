@@ -12,6 +12,7 @@ class RoleApiController extends Controller
      * @OA\Get(path="/api/roles", 
      *   description="Get all Roles",       
      *   operationId="getRolesList",
+     *   tags={"Roles"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()

@@ -12,6 +12,7 @@ class ProducesApiController extends Controller
      * @OA\Get(path="/api/produces", 
      *   description="Get all Produces",       
      *   operationId="getProducesList",
+     *   tags={"Produces"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()
@@ -79,7 +80,7 @@ class ProducesApiController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Produce")
+     *          @OA\JsonContent(ref="#/components/schemas/Produces")
      *       ),
      *      @OA\Response(
      *          response=400,

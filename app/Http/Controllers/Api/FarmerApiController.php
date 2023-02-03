@@ -12,6 +12,7 @@ class FarmerApiController extends Controller
      * @OA\Get(path="/api/farmers", 
      *   description="Get all Farmers",       
      *   operationId="getFarmersList",
+     *   tags={"Farmers"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()

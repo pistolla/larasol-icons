@@ -12,6 +12,7 @@ class PermissionApiController extends Controller
      * @OA\Get(path="/api/permissions", 
      *   description="Get all Permissions",       
      *   operationId="getPermissionsList",
+     *   tags={"Permissions"},
      *   @OA\Response(response=200, 
      *     description="OK",
      *     @OA\JsonContent()

@@ -7,18 +7,17 @@ use OpenApi\Annotations as OA;
 /**
  *
  * @OA\Schema(
- *      title="Store Permission Form request",
+ *      title="Store Produce Form request",
  *      type="object",
- *      required={"id","county_name"},
- *      @OA\Xml(name="StorePermissionRequest"),
- *      @OA\Property(property="id", type="integer", example="1"),
- *      @OA\Property(property="county_name", type="string", description="County Name", example="Nairobi")
+ *      required={"id","produce_name"},
+ *      @OA\Xml(name="StoreProduceRequest"),
+ *      @OA\Property(property="produce_name", type="string", description="County Name", example="Veal")
  * )
  *
- * Class StorePermissionRequest
+ * Class StoreProduceRequest
  *
  */
-class StorePermissionRequest extends FormRequest
+class StoreProduceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,7 +37,6 @@ class StorePermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255|unique:'.config('permission.table_names.permissions', 'permissions').',name',
         ];
     }
 }

@@ -9,7 +9,7 @@ use OpenApi\Annotations as OA;
  * @OA\Schema(
  *      title="Store Program Form request",
  *      type="object",
- *      required={'program_name', 'season', 'season_start', 'season_end', 'farm_type_criteria', 'farm_produce_criteria', 'county_boundary_criteria', 'ward_boundary_criteria', 'maximum_farmers', 'disbursed_amount', 'deposited_amount', 'status', 'organization', 'bank_account'},
+ *      required={"program_name", "season", "season_start", "season_end", "farm_type_criteria", "farm_produce_criteria", "county_boundary_criteria", "ward_boundary_criteria", "maximum_farmers", "disbursed_amount", "deposited_amount", "status", "organization", "bank_account"},
  *      @OA\Xml(name="StoreProgramsRequest"),
  *      @OA\Property(
  *        property="program_name", 

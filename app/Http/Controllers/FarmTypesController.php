@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FarmTypesFormRequest;
+use App\Http\Requests\StoreFarmTypesRequest;
+use App\Http\Requests\UpdateFarmTypesRequest;
 use App\Models\FarmTypes;
 use Exception;
 
@@ -41,7 +42,7 @@ class FarmTypesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse | \Illuminate\Routing\Redirector
      */
-    public function store(FarmTypesFormRequest $request)
+    public function store(StoreFarmTypesRequest $request)
     {
         try {
             
@@ -95,7 +96,7 @@ class FarmTypesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse | \Illuminate\Routing\Redirector
      */
-    public function update($id, FarmTypesFormRequest $request)
+    public function update($id, UpdateFarmTypesRequest $request)
     {
         try {
             

@@ -14,9 +14,9 @@ use OpenApi\Annotations as OA;
  * @OA\Schema(
  *      title="County Form request",
  *      type="object",
- *      required={"county_name"},
+ *      required={"email","password"},
  *      @OA\Xml(name="LoginRequest"),
- *      @OA\Property(property="email", type="string", description="User email", example="admin@materialize.com")
+ *      @OA\Property(property="email", type="string", description="User email", example="admin@materialize.com"),
  *      @OA\Property(property="password", type="string", description="User Password", example="pass1234")
  * )
  *
